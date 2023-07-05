@@ -216,3 +216,24 @@ export const allowWrite: AllowWrite = ({ context, event, authContext }) =>
 
 export default createMachine({...});
 ```
+
+## Impersonation
+
+Any State Backed user with sufficient privileges to create a new [API key](./keys)
+is able to impersonate any user by creating a JWT with the appropriate claims and
+signing it with the key.
+
+This is true of every authorization scheme for every service.
+Please remember to protect your keys.
+
+However, it is sometimes critical to examine or modify production data. For that
+purpose, any user with permissions that would allow them to create an API key and
+impersonate users is allowed to directly access machine instances on a user's
+behalf.
+
+In the CLI, this option is provided for creating instances and sending events to
+machine instances.
+
+In `smply machine-instances send-event`, or `smply machine-instances create`,
+pass `--auth-context '{"sub": "...", ...}'` to supply an auth context to use for
+the request.
