@@ -161,3 +161,22 @@ const state = await stateBackedClient.machineInstances.sendEvent(
 
 `state` has the same properties as described above
 (`state`, `states`, and `publicContext`).
+
+### Read instance state
+
+:::caution
+Any instance state will always be internally consistent but events may change
+the state of the machine instance by the time you use it.
+You can certainly show users information based on the "current" state of an
+instance but you will likely prefer having your machine update external
+systems itself to avoid inconsistencies.
+:::
+
+```javascript
+const state = await stateBackedClient.machineInstances.get(
+    "your-machine-name",
+    "your-machine-instance-name",
+);
+```
+
+`state` is as above.
