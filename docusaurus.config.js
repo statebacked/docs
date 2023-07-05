@@ -41,6 +41,9 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
             'https://github.com/statebacked/docs/tree/main/',
+          remarkPlugins: [
+            [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
+          ]
         },
         blog: {
           showReadingTime: true,
