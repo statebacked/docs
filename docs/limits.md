@@ -1,11 +1,11 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Limits
 
 - Machine instances execute in a web standards-like environment with 128mb of memory.
-- When a machine receives an event, it has 10 seconds to "settle", where "settling" means
+- When a machine receives an event, it has 10 seconds to ["settle"](./settling), where "settling" means
   that it has not child services running and it is not waiting on any "immediate" delays.
   An "immediate" delay is one that is scheduled to run before the 10 second event timeout.
   If a machine exceeds this 10 second timeout and made at least one successful transition,
