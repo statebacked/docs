@@ -18,7 +18,7 @@ machine until you create at least one version for it.
 
 ## Code structure
 
-Your code will run in a **web standards-like environment**.
+Your code will run in a [**web standards-like environment**](../runtime-environment).
 The code that is uploaded to State Backed must be a **self-contained javascript
 bundle (no external dependencies) in [ECMAScript module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#exporting_module_features)
 format** and it must export 3 things:

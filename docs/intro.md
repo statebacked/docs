@@ -39,7 +39,7 @@ There are really only 2 things to keep in mind:
 if there are still any running services, they will be stopped and your machine will receive
 an error event from them. The most recent state of the machine will returned and your machine
 will always be in a consistent state.
-2. Machines run in a web standards-like environment with access to normal browser APIs (e.g.
+2. Machines run in a [web standards-like environment](./runtime-environment) with access to normal browser APIs (e.g.
 fetch, crypto.subtle, WebAssembly, etc.).
 
 ### Upload your machine to State Backed
