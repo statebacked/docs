@@ -90,12 +90,16 @@ const config = {
             title: 'Docs',
             items: [
               {
+                label: 'Quick Start',
+                to: '/docs/intro',
+              },
+              {
                 label: "State Backed",
                 href: "https://statebacked.dev"
               },
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'API Reference',
+                href: "https://api-docs.statebacked.dev"
               },
             ],
           },

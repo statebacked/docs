@@ -1,12 +1,13 @@
 ---
 sidebar_position: 2
 ---
+import TogglerExample from "@site/src/components/Examples/toggler-machine-example";
 
 # Machine versions
 
 Each [machine definition](./machines) may have many **machine versions** associated with it.
 
-The most important aspect of a machine version is your actual [code](#code-structure) for your authorizer and state machines.
+The most important aspect of a machine version is your actual [code](#code-structure) for your [authorizer](./authorization) and state machines.
 
 Machine versions can also provide a `version specifier` to help you link
 a version to your own systems. We recommend a semantic version, timestamp,
@@ -26,6 +27,10 @@ format** and it must export 3 things:
 authorize all requests to read the state of an instance of your machine
 3. Your code should export an **`allowWrite`** function that will be called to 
 authorize all requests to send events to an instance of your machine
+
+### Example
+
+<TogglerExample />
 
 ## Version upgrades
 

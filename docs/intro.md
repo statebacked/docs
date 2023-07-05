@@ -3,8 +3,7 @@ sidebar_position: 1
 title: Quick Start
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import TogglerExample from "@site/src/components/Examples/toggler-machine-example";
 
 # Welcome to State Backed!
 
@@ -29,121 +28,7 @@ npm install --global smply
 
 Machine definitions are typescript or javascript files that default export an XState state machine as well as `allowRead` and `allowWrite` functions.
 
-<Tabs>
-<TabItem value="ts" label="Typescript">
-
-Save this example as `example-machine.ts`:
-
-```javascript title=example-machine.ts
-import { createMachine, assign } from "xstate";
-import type { AllowRead, AllowWrite } from "@statebacked/machine-def";
-
-// State Backed will call allowRead to determine whether a request to read
-// the state of an instance of this machine will be allowed or not.
-// authContext contains claims about your end-user that you include in the
-// auth token for the request.
-//
-// In this case, we allow users to read from any machine instance that
-// is named with their user id.
-export allowRead: AllowRead = ({ machineInstanceName, authContext }) =>
-  machineInstanceName === authContext.sub;
-
-// Similarly, State Backed calls allowWrite  to determine whether a request
-// to send an event to an instance of this machine will be allowed or not.
-//
-// In this case, we allow users to write to any machine instance that
-// is named with their user id.
-export allowWrite: AllowWrite = ({ machineInstanceName, authContext }) =>
-  machineInstanceName === authContext.sub;
-
-type Context = {
-  public: {
-    toggleCount?: number;
-  }
-};
-
-export default createMachine<Context>({
-  predictableActionArguments: true,
-  initial: "on",
-  states: {
-    on: {
-      on: {
-        toggle: {
-          target: "off",
-          actions: assign({
-            // any context under the `public` key will be visible to authorized clients
-            public: (ctx) => ({
-              ...ctx.public,
-              toggleCount: (ctx.public?.toggleCount ?? 0) + 1
-            })
-          }),
-        },
-      },
-    },
-    off: {
-      on: {
-        toggle: "on",
-      },
-    },
-  },
-});
-```
-
-</TabItem>
-<TabItem value="js" label="Javascript">
-
-Save this example as `example-machine.js`:
-
-```javascript title=example-machine.js
-import { createMachine } from "xstate";
-
-// State Backed will call allowRead to determine whether a request to read
-// the state of an instance of this machine will be allowed or not.
-// authContext contains claims about your end-user that you include in the
-// auth token for the request.
-//
-// In this case, we allow users to read from any machine instance that
-// is named with their user id.
-export allowRead = ({ machineInstanceName, authContext }) =>
-  machineInstanceName === authContext.sub;
-
-// Similarly, State Backed calls allowWrite  to determine whether a request
-// to send an event to an instance of this machine will be allowed or not.
-//
-// In this case, we allow users to write to any machine instance that
-// is named with their user id.
-export allowWrite = ({ machineInstanceName, authContext }) =>
-  machineInstanceName === authContext.sub;
-
-export default createMachine({
-  predictableActionArguments: true,
-  initial: "on",
-  states: {
-    on: {
-      on: {
-        toggle: {
-          target: "off",
-          actions: assign({
-            // any context under the `public` key will be visible to authorized clients
-            public: (ctx) => ({
-              ...ctx.public,
-              toggleCount: (ctx.public?.toggleCount ?? 0) + 1
-            })
-          }),
-        },
-      },
-    },
-    off: {
-      on: {
-        toggle: "on",
-      },
-    },
-  },
-});
-```
-
-</TabItem>
-</Tabs>
+<TogglerExample />
 
 Our example is a very simple machine that doesn't interact with the outside world.
 In your machines, you can run just about anything you want: call external services
