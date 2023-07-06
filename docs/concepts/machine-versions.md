@@ -82,6 +82,10 @@ smply machine-versions create \
     --node <your-machine.(ts|js)>
 ```
 
+:::info
+Deno-style, self-contained dependency support is coming soon.
+:::
+
 Creating a version by building `your-machine.(ts|js)`
 **using deno dependency resolution**
 (requires using deno-style imports)

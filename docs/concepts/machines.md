@@ -30,7 +30,7 @@ single, self-contained javascript bundle suitable for deployment in our
 [web standards-like environment](../runtime-environment).
 For this to work, you will need to have a `package.json` and run `npm install`.
 
-Alternatively, you can use [Deno-style ESM specifiers](https://deno.land/manual@v1.15.2/linking_to_external_code) for imports, skip the `package.json`
+Alternatively, you will soon be able to use [Deno-style ESM specifiers](https://deno.land/manual@v1.15.2/linking_to_external_code) for imports, skip the `package.json`
 and `npm` entirely, and pass the `--deno` option.
 
 Finally, you can run your own build step to produce a single-file bundle for
