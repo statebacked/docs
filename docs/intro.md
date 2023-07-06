@@ -47,7 +47,7 @@ fetch, crypto.subtle, WebAssembly, etc.).
 ```bash
 # You'll be prompted to sign in to State Backed. Your credentials will be stored in ~/.smply.
 # replace ./example-machine.ts with ./example-machine.js if you used js above
-smply machines create --machine example-machine --deno ./example-machine.ts
+smply machines create --machine example-machine --node ./example-machine.ts
 ```
 
 🎉 Woohoo!
