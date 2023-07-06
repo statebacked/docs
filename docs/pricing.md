@@ -9,6 +9,10 @@ State Backed is **free** for up to 1,000 transitions and 10,000 reads each month
 transition retention.
 :::
 
+State Backed plans apply to an organization and cover all activity for machines, machine versions, and
+machine instances within that organization.
+You can access your billing information by running `smply billing`.
+
 ## Pricing dimensions
 
 State Backed pricing has 2 primary dimensions: **transitions** and **reads**.
