@@ -19,7 +19,7 @@ import type {AllowRead, AllowWrite} from "@statebacked/machine-def";
 //
 // In this case, we allow users to read from any machine instance that
 // is named with their user id.
-export allowRead: AllowRead = ({machineInstanceName, authContext}) =>
+export const allowRead: AllowRead = ({machineInstanceName, authContext}) =>
     machineInstanceName === authContext.sub;
 
 // Similarly, State Backed calls allowWrite to determine whether a request
@@ -27,7 +27,7 @@ export allowRead: AllowRead = ({machineInstanceName, authContext}) =>
 //
 // In this case, we allow users to write to any machine instance that
 // is named with their user id.
-export allowWrite: AllowWrite = ({machineInstanceName, authContext}) =>
+export const allowWrite: AllowWrite = ({machineInstanceName, authContext}) =>
     machineInstanceName === authContext.sub;
 
 type Context = {
@@ -77,7 +77,7 @@ import {createMachine} from "xstate";
 //
 // In this case, we allow users to read from any machine instance that
 // is named with their user id.
-export allowRead = ({machineInstanceName, authContext}) =>
+export const allowRead = ({machineInstanceName, authContext}) =>
     machineInstanceName === authContext.sub;
 
 // Similarly, State Backed calls allowWrite to determine whether a request
@@ -85,7 +85,7 @@ export allowRead = ({machineInstanceName, authContext}) =>
 //
 // In this case, we allow users to write to any machine instance that
 // is named with their user id.
-export allowWrite = ({machineInstanceName, authContext}) =>
+export const allowWrite = ({machineInstanceName, authContext}) =>
     machineInstanceName === authContext.sub;
 
 export default createMachine({
