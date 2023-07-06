@@ -208,12 +208,16 @@ npm install --save @statebacked/client
 ```javascript title=client.ts
 import { StateBackedClient } from "@statebacked/client";
 
+// your user's id (should match the id used to make their token)
+const userId = "...";
+
 // the name of the machine that we created, above
 const machineName = "example-machine";
 
 // get the token from the server as generated in `getStateBackedToken`, above
 const token = await getTokenFromServer();
 
+// our State Backed client
 const client = new StateBackedClient(token);
 
 const { state, publicContext } = await client.machineInstances.create(
