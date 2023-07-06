@@ -10,12 +10,13 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'Bundles of state and logic',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        It shouldn't be so difficult to set up persistent state and build logic
+        on top of it. State Backed gets the state management out of the way and
+        lets you build your logic declaratively and visually, in XState.
       </>
     ),
   },
@@ -24,18 +25,22 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Your users don't care about your infrastructure or your datastore.
+        Your users want your business logic, applied consistently and securely
+        to their data. State Backed gets everything out of the way so you can
+        focus on your business logic.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Powered by XState',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        XState is loved by millions of engineers as the best way to manage
+        complex (or simple) logic and state on the frontend. With State Backed,
+        you can deploy exactly the same XState state machines as a backend
+        API in one command.
       </>
     ),
   },
