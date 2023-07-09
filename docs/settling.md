@@ -15,6 +15,16 @@ or [invoked](https://xstate.js.org/docs/guides/communication.html) by the machin
 
 An "immediate" delay is one that is scheduled to run before the 10 second processing timeout.
 
+## Impact on child services
+
+State Backed does not currently support long-lived child services.
+Any spawned services live only as long as the processing of the current event,
+which is limited to at most 10 seconds.
+
+We intend to enable long-lived actor support in the future.
+Email [support@statebacked.dev](mailto:support@statebacked.dev) if your use
+case would benefit from having long-lived actors.
+
 ## Immediate delay example
 
 Consider this machine:

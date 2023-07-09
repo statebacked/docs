@@ -17,5 +17,12 @@ sidebar_position: 7
 - Context may never exceed 400kb when represented as JSON in UTF8. If context exceeds
   this size, the transition will fail and the request that delivered the event that caused
   context to exceed that size will fail. The state of the machine instance will be as though
-  the failing event never occurred.
+  the failing event never occurred. Because of our [consistency guarantees](./consistency-guarantees),
+  no observable actions or services that would have been run due to the failed transition will run.
 - The size of the Javascript bundle for a machine version cannot exceed 1mb (1,000,000 bytes).
+- State Backed does not currently support long-lived child services.
+  Any spawned services live only as long as the processing of the current event,
+  which is limited to at most 10 seconds.
+  This restriction will be lifted in the future - email
+  [support@statebacked.dev](mailto:support@statebacked.dev) if your use case
+  would benefit from long-lived child service support.
