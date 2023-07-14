@@ -34,5 +34,5 @@ causing the action, service, or actor to run was recorded.
 ## Upshot
 
 This should match your intuition: if you can see a record of a transition,
-the effects of the transition happened or failed. They effects may have been attempted
+the effects of the transition happened or failed. The effects may have been attempted
 and then failed or they may have failed prior to even being attempted.
