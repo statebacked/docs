@@ -104,6 +104,10 @@ const config = {
                 label: 'API Reference',
                 href: "https://api-docs.statebacked.dev"
               },
+              {
+                label: "Types for machine definitions and migrations",
+                href: "https://statebacked.github.io/machine-def/"
+              }
             ],
           },
           {
