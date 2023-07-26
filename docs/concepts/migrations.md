@@ -23,11 +23,11 @@ If you want an instance to run with a newer version of your machine, you'll need
 Your code will run in a [**web standards-like environment**](../runtime-environment).
 The code that is uploaded to State Backed must be a **self-contained javascript
 bundle (no external dependencies) in [ECMAScript module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#exporting_module_features)
-format** and it must export 3 things:
+format** and it must export 2 things:
 1. Your code should export an **`upgradeState`** function that will be called to 
 upgrade leaf states from one version to the next. By "leaf state", we mean that
 this function will be invoked for each individual state below a parallel state.
-3. Your code should export an **`upgradeContext`** function that will be called to 
+2. Your code should export an **`upgradeContext`** function that will be called to 
 upgrade machine instance context from one version to the next.
 
 ### Example
