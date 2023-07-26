@@ -107,6 +107,10 @@ const config = {
               {
                 label: "Types for machine definitions and migrations",
                 href: "https://statebacked.github.io/machine-def/"
+              },
+              {
+                label: "Client library API reference",
+                href: "https://statebacked.github.io/client-js/"
               }
             ],
           },
