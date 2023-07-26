@@ -48,7 +48,7 @@ upon request.
 ### Hobby
 
 The State Backed Hobby plan includes 100,000 transitions and 1,000,000 reads per month with 30 day
-historical trasition retention.
+historical transition retention.
 
 The Hobby plan is **$20 / month** or **$200 / year**.
 
@@ -59,7 +59,7 @@ Added bundles do not expire and will automatically be used to cover overages for
 ### Business
 
 The State Backed Business plan includes 2,500,000 transitions and 25,000,000 reads per month with 90 day
-historical trasition retention.
+historical transition retention.
 
 The Hobby plan is **$200 / month** or **$2,000 / year**.
 
