@@ -7,13 +7,10 @@ sidebar_position: 3
 When a machine instance receives an event, the machine continues processing until it "settles" or until
 its 10 second timeout elapses.
 
-A machine instance is considered "settled" when it has no child services running and it is not waiting on
-any "immediate" delays.
+A machine instance is considered "settled" when it has no child services running.
 
 A child service is any service [spawned](https://xstate.js.org/docs/guides/actors.html#spawning-actors)
 or [invoked](https://xstate.js.org/docs/guides/communication.html) by the machine.
-
-An "immediate" delay is one that is scheduled to run before the 10 second processing timeout.
 
 ## Impact on child services
 
@@ -24,30 +21,6 @@ which is limited to at most 10 seconds.
 We intend to enable long-lived actor support in the future.
 Email [support@statebacked.dev](mailto:support@statebacked.dev) if your use
 case would benefit from having long-lived actors.
-
-## Immediate delay example
-
-Consider this machine:
-
-```javascript
-import { createMachine } from "xstate";
-
-export default createMachine({
-    initial: "wait",
-    states: {
-        wait: {
-            after: {
-                3000: "complete"
-            }
-        },
-        complete: {}
-    }
-});
-```
-
-The request to create this machine will take 3 seconds to complete because the 3 second delay that is scheduled
-from its initial state is considered an "immediate" delay because it will occur less than 10 seconds after the
-arrival of the event.
 
 # Service invocation example
 

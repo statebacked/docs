@@ -34,8 +34,11 @@ authorize all requests to send events to an instance of your machine
 
 ## Version upgrades
 
-Right now, instances are locked to the machine version they were created from.
-Check back soon for an announcement about version upgrades for running instances.
+Existing instances may be upgraded between machine versions via [migrations](./migrations).
+As long as there is a path from the current instance version to the desired instance
+version via some set of migrations, once you set a desired version for an instance,
+State Backed will execute the sequence of migrations to bring the instance state and context
+to that version.
 
 ## Builds
 
@@ -43,7 +46,7 @@ The `smply` CLI can attempt to build a suitable State Backed bundle for you
 from your javascript or typescript code or you can build your bundle yourself.
 
 If you choose to build your own bundle, make sure you target a web 
-standards-like environment and emit an ECMAScript module (esm).
+standards-like [environment](../runtime-environment) and emit an ECMAScript module (esm).
 
 If you elect to have `smply` build your bundle, it executes builds with
 [esbuild](https://esbuild.github.io/) using:
@@ -104,7 +107,7 @@ npm run build
 smply machine-versions create \
     --machine <your machine name> \
     --version-reference 0.2.1 \
-    --file <./dist/your-bundle.js>
+    --js <./dist/your-bundle.js>
 ```
 
 ### Listing the versions for a machine
