@@ -14,6 +14,9 @@ sidebar_position: 7
   When **the next** event is sent to the machine instance, State Backed will first deliver
   error events for each service that was active during the timeout and will then deliver
   the new event.
+- Context and event data must be JSON-serializable and deserializable. Keep in mind that
+  `JSON.parse(JSON.stringify({ something: new Date() }))` does not behave as you hope it does.
+  It's best to only put pure data in context.
 - Context may never exceed 400kb when represented as JSON in UTF8. If context exceeds
   this size, the transition will fail and the request that delivered the event that caused
   context to exceed that size will fail. The state of the machine instance will be as though
