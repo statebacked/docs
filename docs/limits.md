@@ -29,3 +29,10 @@ sidebar_position: 7
   This restriction will be lifted in the future - email
   [support@statebacked.dev](mailto:support@statebacked.dev) if your use case
   would benefit from long-lived child service support.
+- Delayed events will be attempted at most 5 times. If every attempt to deliver the event fails
+  (e.g. the machine throws or times out before transitioning), the event will be discarded.
+
+# Validations
+
+- Machine names may be between 1 and 128 characters from the set A-Za-z_-
+- Machine instance names may be between 1 and 128 characters from the set A-Za-z_-
