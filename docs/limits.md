@@ -22,7 +22,9 @@ sidebar_position: 7
   context to exceed that size will fail. The state of the machine instance will be as though
   the failing event never occurred. Because of our [consistency guarantees](./consistency-guarantees),
   no observable actions or services that would have been run due to the failed transition will run.
-- The size of the Javascript bundle for a machine version or migration cannot exceed 1mb (1,000,000 bytes).
+- The size of the Javascript bundle (after minification and gzip) for a machine version or migration
+  cannot exceed 1mb (1,000,000 bytes). The size of the Javascript bundle after unzipping cannot
+  exceed 10mb (10,000,000 bytes).
 - State Backed does not currently support long-lived child services.
   Any spawned services live only as long as the processing of the current event,
   which is limited to at most 10 seconds.
