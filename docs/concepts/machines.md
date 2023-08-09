@@ -56,3 +56,33 @@ smply machines list
 ```bash
 smply machines get --machine <your machine name>
 ```
+
+## Client SDK
+
+[Documentation](https://statebacked.github.io/client-js/classes/StateBackedClient.html#machines)
+
+### Creating a machine definition
+
+You will generally want to use the smply CLI to create machines.
+
+```javascript
+import { StateBackedClient } from "@statebacked/client";
+
+const client = new StateBackedClient(token);
+
+// highlight-start
+await client.machines.create("my-machine");
+
+// you'll have to create a version before you can create instances
+await client.machineVersions.create(
+    "my-machine",
+    {
+        makeCurrent: true,
+        clientInfo: "v0.1.1",
+        code: `
+            // JS code for your machine version
+        `
+    }
+)
+// highlight-end
+```
