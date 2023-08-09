@@ -65,7 +65,7 @@ to interact with your State Backed machine instances.
 
 ### Client
 
-The key operations you'll want to use are:
+[Client documentation here](https://statebacked.github.io/client-js/classes/StateBackedClient.html#machineInstances).
 
 ### Install
 
@@ -180,3 +180,88 @@ const state = await stateBackedClient.machineInstances.get(
 ```
 
 `state` is as above.
+
+### Subscribe to instance state
+
+```javascript
+const unsubscribe = stateBackedClient.machineInstances.subscribe(
+    "your-machine-name",
+    "your-machine-instance-name",
+    ({ state, publicContext }) => {
+        // handle updated instance state
+    },
+    (error) => {
+        // error is one of these https://statebacked.github.io/client-js/modules/errors.html
+    }
+);
+
+// ...
+
+unsubscribe();
+```
+
+`state` is as above.
+
+## CLI
+
+### List instances for a machine
+
+```bash
+smply instances list \
+    --machine <your-machine-name>
+```
+
+### Creating a machine instance
+
+```bash
+smply instances create \
+    --machine <your-machine-name> \
+    --instance <your-instance-name> \
+    --auth-context '{"sub": "user-id", ...}' \
+    --context '{"initial": "context"}'
+```
+
+### Sending an event to an instance
+
+```bash
+smply instances send-event \
+    --machine <your-machine-name> \
+    --instance <your-instance-name> \
+    --auth-context '{"sub": "user-id", ...}' \
+    --event 'event-name' # or '{"type": "event-name", ...}'
+```
+
+### Read instance state
+
+```bash
+smply instances get \
+    --machine <your-machine-name> \
+    --instance <your-instance-name>
+```
+
+### Update instance status
+
+:::caution
+Pausing an instance is one of the only ways it can get into an invalid state.
+Paused instances reject all events, including delayed/scheduled events. 
+Delayed events are only retried 5 times before being discarded so pausing a machine may cause it to permanently discard some delayed events.
+:::
+
+```bash
+smply instances set-status \
+    --machine <your-machine-name> \
+    --instance <your-instance-name> \
+    --status <paused | running>
+```
+
+### Delete instance
+
+:::caution
+Instance deletion is permanent and cannot be undone.
+:::
+
+```bash
+smply instances delete \
+    --machine <your-machine-name> \
+    --instance <your-instance-name>
+```
