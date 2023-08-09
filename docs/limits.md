@@ -38,3 +38,7 @@ sidebar_position: 8
 
 - Machine names may be between 1 and 128 characters from the set A-Za-z_-
 - Machine instance names may be between 1 and 128 characters from the set A-Za-z_-
+
+# Library support
+
+- State Backed is built and tested against machines built with xstate v4.x. We are working on extending support to v5.
