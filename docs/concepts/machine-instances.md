@@ -129,6 +129,8 @@ const state = await stateBackedClient.machineInstances.create(
   instance's `context`. This allows you to control the public interface that
   your machine instances expose while keeping any data you don't put under
   the `public` key private to your instance.
+- `tags` - an array of tags for the current states
+- `done` - a boolean indicating whether the machine instance has reached a final state
 
 ### Send an event to a machine instance
 
