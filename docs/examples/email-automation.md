@@ -18,7 +18,7 @@ Follow along with the full source code [here](https://github.com/statebacked/exa
 
 You can also play with a live version of this example [here](https://examples-state-backed.vercel.app/).
 
-Check out this quick video walk through or read on for more detils.
+Check out this quick video walk through or read on for more details.
 
 <iframe
     width="560"
