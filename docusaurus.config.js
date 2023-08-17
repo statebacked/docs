@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'State Backed',
-  tagline: 'XState backend as a service, up and running in 5 minutes',
+  tagline: 'Deploy invincible XState state machines to the cloud in one command, connect from any client in two lines of code, and scale to millions of users.',
   favicon: 'img/favicon.png',
 
   // Set the production url of your site here

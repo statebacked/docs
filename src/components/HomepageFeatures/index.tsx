@@ -10,37 +10,40 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Bundles of state and logic',
+    title: 'Build.',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        It shouldn't be so difficult to set up persistent state and build logic
-        on top of it. State Backed gets the state management out of the way and
-        lets you build your logic declaratively and visually, in XState.
+        Build your business logic as an XState state machine.
+        You know, the stuff your users actually care about.
+        Build visually with Stately or code-first with XState.
+        Don't worry about persistence, scalability, consistency, etc.
+        You just bring your logic and we'll take care of the rest.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Deploy.',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Your users don't care about your infrastructure or your datastore.
-        Your users want your business logic, applied consistently and securely
-        to their data. State Backed gets everything out of the way so you can
-        focus on your business logic.
+        Deploy your logic to the State Backed cloud where it will be
+        ready to run as invincible, consistent, secure, always-on machine instances.
+        We store every version of your machine and support simple migrations
+        for easy upgrades and rollbacks, even of long-lived instances.
       </>
     ),
   },
   {
-    title: 'Powered by XState',
+    title: 'Connect.',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        XState is loved by millions of engineers as the best way to manage
-        complex (or simple) logic and state on the frontend. With State Backed,
-        you can deploy exactly the same XState state machines as a backend
-        API in one command.
+        Create and connect to your machine instances, securely, with our 2-line
+        client- or server-side integrations.
+        Multiplayer and real-time support is built-in for every instance.
+        Bring your own authentication and sleep soundly with end-to-end,
+        fine-grained authorization of every request.
       </>
     ),
   },
@@ -53,7 +56,7 @@ function Feature({title, Svg, description}: FeatureItem) {
         <Svg className={styles.featureSvg} role="img" />
       </div>
       <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
+        <h1>{title}</h1>
         <p>{description}</p>
       </div>
     </div>

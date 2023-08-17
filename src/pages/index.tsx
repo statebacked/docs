@@ -18,7 +18,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Get Started - 5min ⏱️
+            Get Started in &lt;5min ⏱️
           </Link>
         </div>
       </div>
@@ -29,8 +29,8 @@ function HomepageHeader() {
 export default function Home(): JSX.Element {
   return (
     <Layout
-      title={`State Backed - XState backend as a service`}
-      description="Deploy any XState state machine as a backend in <5 minutes">
+      title={`State Backed - deploy invincible state machines to the cloud in one command`}
+      description="The fastest path from business logic to production. Deploy a state machine then create instances of it and securely connect from multiple clients with our easy client- or server-side integrations.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
