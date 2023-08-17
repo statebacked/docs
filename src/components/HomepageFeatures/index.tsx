@@ -11,7 +11,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Build.',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: require('@site/static/img/homepage-build.svg').default,
     description: (
       <>
         Build your business logic as an XState state machine.
@@ -24,7 +24,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Deploy.',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    Svg: require('@site/static/img/homepage-deploy.svg').default,
     description: (
       <>
         Deploy your logic to the State Backed cloud where it will be
@@ -36,7 +36,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Connect.',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    Svg: require('@site/static/img/homepage-connect.svg').default,
     description: (
       <>
         Create and connect to your machine instances, securely, with our 2-line
