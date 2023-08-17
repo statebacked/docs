@@ -21,3 +21,19 @@
   align-items: center;
   justify-content: center;
 }
+
+.benefitList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.benefitList li {
+  padding-left: 1rem;
+}
+
+.benefitList li::before {
+  content: '✅';
+  margin-right: 6px;
+}
