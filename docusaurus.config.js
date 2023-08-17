@@ -119,7 +119,7 @@ const config = {
             items: [
               {
                 label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/statebacked',
+                href: 'https://stackoverflow.com/questions/tagged/state-backed',
               },
               {
                 label: 'Twitter',
