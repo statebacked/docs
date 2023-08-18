@@ -57,17 +57,13 @@ with a JSON body of `{ "code": "rejected-by-machine-authorizer" }`.
 
 `allowWrite` provides one additional property in its argument if the request is for sending
 an event (vs initialization):
-- `event` - The [SCXML-style](https://statebacked.github.io/machine-def/types/SCXMLEvent.html)
-  event in the request. To get the event name, youc an check `event.name` or `event.data.type`.
+- `event` - The event in the request.
+  To get the event name, you can check `event.type`.
   If you send an event like `{ "type": "foo", "bar": 4 }` you will have an `event` like this:
   ```javascript
   {
-    "name": "foo",
-    "type": "external",
-    "data": {
-        "type": "foo",
-        "bar": 4
-    }
+    "type": "foo",
+    "bar": 4
   }
   ```
 
@@ -208,7 +204,7 @@ const membershipUpdateEvents = new Set([
 ]);
 
 export const allowWrite: AllowWrite = ({ context, event, authContext }) =>
-    membershipUpdateEvents.has(event.name)
+    membershipUpdateEvents.has(event.type)
         // only admins can update membership
         ? context.members[authContext.sub] === "admin"
         // but other roles can send other events
