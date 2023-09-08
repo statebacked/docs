@@ -80,7 +80,11 @@ In a machine instance per user authorization model, you can name machine instanc
 ID of the user they are for, include only a `sub` claim in your token, and ensure that
 the `machineInstanceName` matches the `authContext.sub` in your authorizers.
 
-Token generation:
+Typically, you would just use [token exchange](./token-exchange) to retrieve a State Backed
+token with a `sub` claim derived from your identity provider's user ID.
+
+If you want to do your own token generation or understand exactly what the State Backed token would
+look like, here you go:
 
 ```javascript title=your-serverside-code.ts
 import { signToken } from "@statebacked/token";
@@ -102,7 +106,7 @@ function generateToken(user) {
 }
 ```
 
-Authorization:
+Regardless of how you generate a token with a `sub` claim, authorization looks the same:
 
 ```javascript title=your-machine-definition.ts
 import { AllowRead, AllowWrite } from "@statebacked/machine-def";
