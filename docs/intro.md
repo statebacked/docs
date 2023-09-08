@@ -35,16 +35,22 @@ Machine definitions are typescript or javascript files that default export an XS
 Our example is a very simple machine that doesn't interact with the outside world.
 In your machines, you can run just about anything you want: call external services
 to send emails, update your own API, read data from external sources, or schedule
-actions and events to run in the future using all of the power of XState.
+actions and events to run in the future with our reliable timers using all of the power of XState.
 There are really only 2 things to keep in mind:
 1. Your machine can execute for 10 seconds after it receives an event. After 10 seconds,
 if there are still any running services, they will be stopped and your machine will receive
 an error event from them. The most recent state of the machine will returned and your machine
-will always be in a consistent state.
+will always be in a consistent state. State Backed supports long-running workflows composed of short-running steps.
 2. Machines run in a [web standards-like environment](./runtime-environment) with access to normal browser APIs (e.g.
 fetch, crypto.subtle, WebAssembly, etc.).
 
 ### Upload your machine to State Backed
+
+We'll show you how to create a machine via the CLI, below, but you may want to head over to
+our [web dashboard](https://www.statebacked.dev/machines) and follow along with the in-browser
+development environment and visualizer.
+
+For the CLI-inclined:
 
 ```bash
 # You'll be prompted to sign in to State Backed. Your credentials will be stored in ~/.smply.
@@ -61,144 +67,20 @@ Send events and read instance state and State Backed will handle persistence and
 
 The real power of State Backed is sending events via API from your own app but let's create a machine instance and
 send an example event from the command line to get a feel for how this works.
+Again, feel free to play around with the CLI or head over to the [web dashboard](https://www.statebacked.dev/machines)
+and create a machine instance and send it events directly from the browser (hint: check out the logs and transition
+history while you're at it).
 
 ```bash
-smply instances create --machine example-machine --instance user-123 --auth-context '{"sub": "user-123"}'
-smply instances send-event --machine example-machine --instance user-123 --auth-context '{"sub": "user-123"}' --event toggle
+smply instances create --machine example-machine --instance session-123 --auth-context '{"sid": "session-123"}'
+smply instances send-event --machine example-machine --instance session-123 --auth-context '{"sid": "session-123"}' --event toggle
 ```
 
 Great! Now, let's integrate State Backed into an app.
 
-### Create API keys
-
-:::tip
-
-Make sure to store the keys (`sbk_...` and `sbsec_...` somewhere safe).
-
-:::
-
-```bash
-# create keys for our production app
-smply keys create --use production --name production-app
-```
-
-### Create tokens for your end-users
-
-:::danger
-
-Only create tokens on devices that you control (e.g. your server).
-Creating tokens requires access to your secret key and anyone who has your secret key can impersonate any of your users.
-
-:::
-
-On your server:
-
-```bash npm2yarn
-npm install --save @statebacked/token
-```
-
-Generate a State Backed token and pass it to your client.
-
-<Tabs>
-<TabItem value="ts" label="Typescript">
-
-```javascript title=your-server.ts
-import { signToken } from "@statebacked/token";
-
-// The State Backed key id for the key you generated above
-const stateBackedKeyId = process.env.STATE_BACKED_KEY_ID;
-// The State Backed secret key for the key you generated above
-const stateBackedSecretKey = process.env.STATE_BACKED_SECRET_KEY;
-const tokenExpiration = "7d"; // 7 days
-const issuer = "your-domain.com"; // TODO: replace with your domain
-
-type User = /* type for your user info */
-
-/**
- * Returns a State Backed authentication token for the given user
- * 
- * You can include any information you need to make authorization decisions
- * as claims in the token.
- * We recommend always including a `sub` claim with the user's id.
- * 
- * Return this token to your client.
- **/
-export function getStateBackedToken(user: User) {
-  const key = {
-    stateBackedKeyId,
-    stateBackedSecretKey,
-  };
-
-  const claims = {
-    sub: user.id,
-  };
-
-  return signToken(
-    key,
-    claims,
-    {
-      issuer,
-      expires: {
-        in: tokenExpiration,
-      },
-    },
-  );
-}
-```
-
-</TabItem>
-<TabItem value="js" label="Javascript">
-
-```javascript title=your-server.ts
-import { signToken } from "@statebacked/token";
-
-const stateBackedKeyId = process.env.STATE_BACKED_KEY_ID;
-const stateBackedSecretKey = process.env.STATE_BACKED_SECRET_KEY;
-const tokenExpiration = "7d"; // 7 days
-const issuer = "your-domain.com"; // TODO: replace with your domain
-
-/**
- * Returns a State Backed authentication token for the given user
- * 
- * You can include any information you need to make authorization decisions
- * as claims in the token.
- * We recommend always including a `sub` claim with the user's id.
- * 
- * Return this token to your client.
- **/
-export function getStateBackedToken(user) {
-  const key = {
-    stateBackedKeyId,
-    stateBackedSecretKey,
-  };
-
-  const claims = {
-    sub: user.id,
-  };
-
-  return signToken(
-    key,
-    claims,
-    {
-      issuer,
-      expires: {
-        in: tokenExpiration,
-      },
-    },
-  );
-}
-```
-
-</TabItem>
-</Tabs>
-
 ### Interact with State Backed machines in your app
 
-:::tip
-
-This code can live on your client, server, or anywhere.
-
-:::
+In your client-side codebase:
 
 ```npm2yarn
 npm install --save @statebacked/client
@@ -210,24 +92,33 @@ npm install --save @statebacked/client
 ```javascript title=client.ts
 import { StateBackedClient } from "@statebacked/client";
 
-// your user's id (should match the id used to make their token)
-const userId = "...";
-
 // the name of the machine that we created, above
 const machineName = "example-machine";
 
-// get the token from the server as generated in `getStateBackedToken`, above
-const token = await getTokenFromServer();
+// we can store our session ID in session storage or wherever we like.
+// if we switch to use authenticated instead of anonymous sessions, we don't need any session ID.
+const sessionId = crypto.randomUUID();
 
-// our State Backed client
-const client = new StateBackedClient(token);
+// our State Backed client, using an anonymous session
+// we can also configure State Backed to use our existing authentication provider
+// to securely include claims about the user making each request
+const client = new StateBackedClient({
+  anonymous: {
+    orgId: "org-YOUR_ORG_ID",
+    getSessionId() {
+      return sessionId;
+    }
+  }
+});
 
-const { state, publicContext } = await client.machineInstances.create(
+// name our instances with our session ID to match our authorization rules
+const machineInstanceName = sessionId;
+
+const { state, publicContext } = await client.machineInstances.getOrCreate(
   machineName,
   {
     // name of the machine instance
-    // here, we name instances with the user id to match our authorization rules
-    slug: userId,
+    slug: machineInstanceName,
     context: {
       // we can set some initial context for the machine or leave this undefined
     },
@@ -257,15 +148,30 @@ import { StateBackedClient } from "@statebacked/client";
 // the name of the machine that we created, above
 const machineName = "example-machine";
 
-const token = await getTokenFromServer();
-const client = new StateBackedClient(token);
+// we can store our session ID in session storage or wherever we like.
+// if we switch to use authenticated instead of anonymous sessions, we don't need any session ID.
+const sessionId = crypto.randomUUID();
 
-const { state, publicContext } = await client.machineInstances.create(
+// our State Backed client, using an anonymous session
+// we can also configure State Backed to use our existing authentication provider
+// to securely include claims about the user making each request
+const client = new StateBackedClient({
+  anonymous: {
+    orgId: "org-YOUR_ORG_ID",
+    getSessionId() {
+      return sessionId;
+    }
+  }
+});
+
+// name our instances with our session ID to match our authorization rules
+const machineInstanceName = sessionId;
+
+const { state, publicContext } = await client.machineInstances.getOrCreate(
   machineName,
   {
     // name of the machine instance
-    // here, we name instances with the user id to match our authorization rules
-    slug: userId,
+    slug: machineInstanceName,
     context: {
       // we can set some initial context for the machine or leave this undefined
     },
@@ -290,5 +196,23 @@ const { state, publicContext } = await client.machineInstances.sendEvent(
 
 </Tabs>
 
+That's cool and all but I thought State Backed had built-in real-time and multiplayer support. Let's see it!
+
+```javascript
+const unsubscribe = client.machineInstances.subscribe(
+  machineName,
+  machineInstanceName,
+  ({ state, tags, publicContext, done }) => {
+    // we just got a new state pushed to us.
+    // this could be in response to an event we sent,
+    // an event another client sent (if our authorization rules allowed it),
+    // or an event that was sent by a reliable timer that our machine kicked off a few seconds ago or a few years ago.
+  }
+);
+
+// when we're done:
+unsubscribe();
+```
+
 That's it!
-You now have an unlimited number of secure, persistent, stateful, consistent machine instances running your business logic, available via simple API.
+You now have an unlimited number of secure, persistent, stateful, consistent machine instances running your business logic, available for real-time, multiplayer access via simple API.
