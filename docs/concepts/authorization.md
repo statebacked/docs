@@ -12,7 +12,7 @@ respectively.
 
 1. Every request to State Backed includes a JWT signed by one of your [API keys](./keys).
    Thanks to [token exchange](./token-exchange), you generally don't ever actually need
-   to create your own JWT. Just use the built-in anonymous sessions or exchange the authentication
+   to create your own JWT. Just use the built-in [anonymous sessions](./anonymous-sessions) or exchange the authentication
    token from your identity provider (e.g. Auth0 or AWS Cognito) for a State Backed token
    with a simple client config.
 2. The `act` claim from the JWT contains claims about your end-user and is sent to your `allowRead`

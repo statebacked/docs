@@ -13,6 +13,12 @@ You MUST ONLY generate tokens on your server.
 Anyone with your secret key can make any request impersonating any of your users.
 :::
 
+Unlike most APIs, you should *rarely* need to directly use your signing keys with State Backed.
+Most use cases should use [token exchange](./token-exchange) or [anonymous sessions](./anonymous-sessions),
+where State Backed is responsible for handling all aspects of token creation, including signing
+tokens with your keys, on your behalf. Thanks to the power of JWTs, we're able to do this
+completely securely, without any sacrifices.
+
 ## Organizations
 
 Machines, machine versions, and machine instances belong to exactly one organization.
