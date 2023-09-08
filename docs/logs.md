@@ -12,6 +12,10 @@ All logs are captured and made available through the `smply` CLI.
 
 Log retention is based on your [plan](./pricing).
 
+## Web dashboard
+
+You can view logs at the machine or machine instance level in the [dashboard](https://www.statebacked.dev/machines).
+
 ## CLI
 
 Retrieve a batch of logs
