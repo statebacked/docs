@@ -4,8 +4,12 @@ sidebar_position: 3
 
 # Settling
 
+State Backed supports long-running workflows composed of intermediate-length steps.
+That means that your machine instances can process a huge amount of data or events in a completely
+durable and reliable way by running many short (&lt;10 seconds) actions.
+
 When a machine instance receives an event, the machine continues processing until it "settles" or until
-its 10 second timeout elapses.
+that event's 10 second timeout elapses.
 
 A machine instance is considered "settled" when it has no child services running.
 
@@ -71,6 +75,9 @@ the `request-data` request completes or until 10 seconds have elapsed. If the re
 completes prior to the 10 second timeout, the send event request will return the
 new state of the machine instance `complete` or `failed`. Otherwise, because the event
 produced one successful transition (from `idle` to `run`), it will return `run` as
-the state of the machine instance and, when the next event is sent to the machine instance,
-it will first receive an error event for the `request-data` service and transition to the
-`failed` state and will *then* process the event.
+the state of the machine instance and stop the ongoing fetch after 10 seconds.
+Then, when the next event is sent to the machine instance, it will first receive an
+error event for the `request-data` service and transition to the `failed` state
+and only *then* will it process the new event. This ensures a completely consistent
+sequence of states using only the natural error handling primitives provided by
+state machines.
