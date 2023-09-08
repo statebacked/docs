@@ -126,6 +126,10 @@ would produce this result:
 Identity provider mappings use the claim set of the provided token as their input and map to an intermediate claims object.
 Then, token provider mappings take that intermediate claims object as input and map to the final set of claims that will be included in the State Backed token.
 
+## Web dashboard
+
+Manage identity providers and token providers in the [web dashboard](https://www.statebacked.dev/tokens).
+
 ## CLI
 
 Configure an identity provider with a JWKS url

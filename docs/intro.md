@@ -7,15 +7,17 @@ import TogglerExample from "@site/src/components/Examples/toggler-machine-exampl
 
 # Welcome to State Backed!
 
-State Backed runs any [XState](https://xstate.js.org/docs/) state machine as a persistent, API-accessible, stateful backend
-that you can interact with directly from your client code, backend code, and via our CLI.
+State Backed runs any [XState](https://xstate.js.org/docs/) state machine as a persistent, API-accessible, real-time, stateful backend
+that you can interact with directly from your client code, backend code, our CLI, or [dashboard](https://www.statebacked.dev).
 
-We take care of consistency, durability, and availability.
+We take care of consistency, durability, availability, and all of the infrastructure.
 You write simple, testable, visualizable state machines that represent only your business logic.
 
 ## Quick Start
 
 ### Setup our workspace
+
+Follow along with the CLI-based quick start, below, or use our [web dashboard](https://www.statebacked.dev).
 
 ```bash npm2yarn
 npm init

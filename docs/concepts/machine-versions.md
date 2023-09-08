@@ -70,6 +70,12 @@ dependencies are imported with [Deno-style ESM specifiers](https://deno.land/man
 `import { createMachine } from "npm:xstate";`
 to access XState.
 
+## Web dashboard
+
+You can view and create machine versions by tapping into a machine in the [web dashboard](https://www.statebacked.dev/machines).
+
+Use our in-browser code editor and visualizer to define and deploy versions.
+
 ## CLI
 
 ### Creating a machine version

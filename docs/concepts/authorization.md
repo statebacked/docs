@@ -10,16 +10,21 @@ respectively.
 
 ## Authorization model
 
-1. You generate State Backed [API keys](./keys) using `smply keys create`.
-2. **On a server you control**, you use the
-   [@statebacked/token](https://www.npmjs.com/package/@statebacked/token)
-   library or another JWT library to create a JWT with an `act` claim
-   that contains claims about your end-user, signed with one of your
-   State Backed API keys.
-3. You include the generated token in requests that you make to State
-   Backed. The `act` claims as well as other information about the request
-   are provided to your `allowRead` and `allowWrite` functions to authorize
-   the request.
+1. Every request to State Backed includes a JWT signed by one of your [API keys](./keys).
+   Thanks to [token exchange](./token-exchange), you generally don't ever actually need
+   to create your own JWT. Just use the built-in anonymous sessions or exchange the authentication
+   token from your identity provider (e.g. Auth0 or AWS Cognito) for a State Backed token
+   with a simple client config.
+2. The `act` claim from the JWT contains claims about your end-user and is sent to your `allowRead`
+   and `allowWrite` functions as `authContext`. For example, if your JWT included
+   `{ act: { sub: "my-user" }}`, Your auhthorizers would be able to rely on `authContext.sub`
+   containing the user ID for the request.
+
+If you do choose to create your own JWTs, **on a server you control**, you use the
+[@statebacked/token](https://www.npmjs.com/package/@statebacked/token)
+library or another JWT library to create a JWT with an `act` claim
+that contains claims about your end-user, signed with one of your
+State Backed API keys.
 
 ### Benefits
 

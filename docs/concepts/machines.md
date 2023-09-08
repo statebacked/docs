@@ -20,6 +20,14 @@ When you create a machine instance, you can specify the machine version you want
 So machine definitions are really just a name.
 To learn how you'll specify your actual business logic, read on about [machine versions](./machine-versions).
 
+## Web dashboard
+
+You can view and create machines in the [web dashboard](https://www.statebacked.dev/machines).
+
+Use our in-browser code editor and visualizer to define machines and deploy directly from the web.
+
+Click into a machine to view its versions, instances, or logs.
+
 ## CLI
 
 ### Creating a machine definition

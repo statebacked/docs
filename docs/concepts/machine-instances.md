@@ -84,7 +84,11 @@ Every request to a machine instance must include an authentication token (JWT)
 that is signed by one of your [API keys](./keys) and includes claims about
 the end-user that is making the request.
 
-Learn more about generating a token [here](./authorization).
+You can generate tokens yourself, use the built-in anonymous authentication,
+or configure State Backed to trust an identity provider (e.g. Auth0) and generate
+tokens based on its tokens.
+
+Learn more about authorization [here](./authorization).
 
 Once you have a token, initialize your State Backed client.
 
@@ -203,6 +207,12 @@ unsubscribe();
 ```
 
 `state` is as above.
+
+## Web dashboard
+
+You can view and create machine instances by tapping into a machine in the [web dashboard](https://www.statebacked.dev/machines).
+
+Create or upgrade instances, send events and view state and transition history, or pause or delete instances all from the dashboard.
 
 ## CLI
 

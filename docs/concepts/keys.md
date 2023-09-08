@@ -47,6 +47,9 @@ There are 3 distinct sets of scopes worth mentioning:
     - `org-keys.write` - Create and delete keys for the organization
     - `org-members.write` - Invite, remove, and change the roles of organization members
 
+## Web dashboard
+
+You can create and delete keys in the [web dashboard](https://www.statebacked.dev/tokens).
 
 ## CLI
 
