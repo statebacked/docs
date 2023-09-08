@@ -34,37 +34,37 @@ Consider this machine:
 import { createMachine, assign } from "xstate";
 
 export default createMachine({
-    initial: "idle",
-    states: {
-        idle: {
-            on: {
-                run: "run",
-            }
-        },
-        run: {
-            invoke: {
-                id: "request-data",
-                svc: async (ctx) => {
-                    const res = await fetch("https://example.com/");
-                    if (!res.ok) {
-                        throw new Error("oops");
-                    }
+  initial: "idle",
+  states: {
+    idle: {
+      on: {
+        run: "run",
+      }
+    },
+    run: {
+      invoke: {
+        id: "request-data",
+        svc: async (ctx) => {
+          const res = await fetch("https://example.com/");
+          if (!res.ok) {
+            throw new Error("oops");
+          }
 
-                    const { data } = await res.json();
-                    return data;
-                },
-                onDone: {
-                    target: "complete",
-                    actions: assign({
-                        data: (_, evt) => evt.data
-                    }),
-                },
-                onError: "failed",
-            },
+          const { data } = await res.json();
+          return data;
         },
-        complete: {},
-        failed: {},
-    }
+        onDone: {
+          target: "complete",
+          actions: assign({
+            data: (_, evt) => evt.data
+          }),
+        },
+        onError: "failed",
+      },
+    },
+    complete: {},
+    failed: {},
+  }
 });
 ```
 
