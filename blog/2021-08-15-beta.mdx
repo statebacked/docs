@@ -1,0 +1,82 @@
+---
+title: The State Backed open beta is live!
+authors: [abrgr]
+tags: [product announcement]
+---
+
+# State Backed is now in open beta and available for use
+
+State Backed, the first platform to allow anyone to launch any state machine
+as a persistent, reliable cloud actor, subscribe to real-time state updates
+from anywhere, and send fully authorized events from any client or server,
+is now available for use.
+
+During this open beta period, we will not be charging clients for their usage
+and are looking for feedback from the community as we strive to create the
+nicest developer experience of any backend as a service platform.
+
+Already, deploying a new machine consists of running a single command in our
+[smply CLI](https://github.com/statebacked/smply) or using our in-browser
+[IDE and flow visualizer](https://www.statebacked.dev).
+Launching a new instance and connecting from the browser is just 3 lines of code:
+
+```javascript
+import { StateBackedClient } from "@statebacked/client";
+import { useStateBackedMachine } from "@statebacked/react";
+import { useActor } from "@xstate/react";
+
+// Create an anonymous session.
+// You can also easily create authenticated sessions using your existing identity provider,
+// just by altering the config.
+const client = new StateBackedClient({
+  anonymous: {
+    orgId: "org_YOUR-ORG-ID",
+  }
+});
+
+function YourComponent() {
+  const { actor } = useStateBackedMachine(
+    client,
+    {
+      machineName: "your-machine",
+      instanceName: "your-instance",
+      getInitialContext() {
+        return { "any": "initial-context" }
+      }
+    }
+  );
+  
+  const [state, send] = useActor(actor);
+  // render UI based on real-time updated state and send events
+}
+```
+
+The traditional approaches to building backends are getting more and more cumbersome.
+Having built a ton of these traditional backends ourselves, we're tired of pretending
+that our individual endpoints or GraphQL resolvers are nicely decoupled bits of logic.
+In reality, bundles of endpoints, whether you call them microservices or domains within
+your monolith, are highly interdependent, with lots of assumptions baked into each about
+the overall flow of state updates. We are, after all, building cohesive user experiences,
+not merely APIs to be called in any order.
+
+Pretending that these endpoints are decoupled only makes it more and more difficult to
+piece together an understanding of the high-level flow that we actually care about.
+
+We're confident that the better path forward is to treat flows as first-class entities
+on the backend. That's what State Backed is about. You build a state machine that describes
+the logic for a flow or set of flows you care about and deploy it as a single package
+to the State Backed cloud. That means that you can always understand the most crucial aspects
+of your app - the evolution of your state and triggering of external effects.
+State Backed takes care of ensuring that you can launch as many instances of your flows as you
+want, that each instance is persistent and durable, and that every state update and effect
+creates a consistent, linearizable history for that machine instance.
+
+And we forgot to mention: every instance creation, read request, and event you send is controled
+by the simple authorization functions you provide as part of your deployment package, based
+on the trusted user claims from your existing identity provider (or custom claims for
+anonymous access or specialized us cases).
+
+You can deploy your first State Backed backend in less than five minutes at
+[StateBacked.dev](https://www.statebacked.dev).
+
+We'd love your [feedback](mailto:feedback@statebacked.dev)!
