@@ -61,7 +61,7 @@ Added bundles do not expire and will automatically be used to cover overages for
 The State Backed Business plan includes 2,500,000 transitions and 25,000,000 reads per month with 90 day
 historical transition retention.
 
-The Hobby plan is **$200 / month** or **$2,000 / year**.
+The Business plan is **$200 / month** or **$2,000 / year**.
 
 If you exceed the plan quota, you can choose to have us automatically add an additional bundle
 of 2.5m transitions and 25m reads for $200.
