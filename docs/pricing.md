@@ -5,7 +5,7 @@ sidebar_position: 9
 # Pricing
 
 :::tip
-State Backed is **free** for up to 1,000 transitions and 10,000 reads each month with 7 day historical
+State Backed is **always free** for up to 1,000 transitions and 10,000 reads each month with 7 day historical
 transition retention.
 :::
 
