@@ -39,27 +39,39 @@ We'll build a vanilla React app for our UI and connect to our State Backed machi
 XState React hooks. Then, we'll render our UI as a function of the state of our remote machine instance.
 The important bits of our UI code live in [TicTacToe.ts](https://github.com/statebacked/examples/blob/main/tic-tac-toe/ui/src/TicTacToe.tsx).
 
-First, we'll create a State Backed client, like this:
+First, we'll create a State Backed client using an anonymous session, like this:
 ```javascript
 import { StateBackedClient } from "@statebacked/client";
 
 const client = new StateBackedClient({
-  async identityProviderToken() {
-    const token = await getAuth();
-    if (!token) {
-      throw new Error("No access token");
-    }
-    return token;
+  anonymous: {
+    orgId: "org_YOUR-ORG-ID",
+    getSessionId() {
+      return getUserId();
+    },
   },
-  orgId: "org_uHvZHpF4STWvMg8BKVCUTg",
-  tokenProviderService: "example-tic-tac-toe",
 });
 ```
 
-This sets up a State Backed client that will automatically exchange the authentication token from `getAuth`
-for a State Backed token we can use for authorization within our machines.
-We want our tic tac toe game to be playable without any authentication so there's some interesting twists
-to exactly how we handle this that we'll cover at the end.
+This sets up a State Backed client that will use the built-in anonymous session configuration
+to retrieve a State Backed authorization token with the given session ID.
+If we instead needed to rely on authenticated claims about our users in our
+authorization functions for our state machine, we could easily register our identity provider
+with State Backed and could configure our client like this:
+
+```javascript
+
+const client = new StateBackedClient({
+  async identityProviderToken() {
+    // e.g. your Auth0 or Cognito token
+    return getIdentityProviderToken();
+  },
+  orgId: "org_YOUR-ORG-ID",
+  tokenProviderService: "configured-token-provider",
+});
+```
+
+For now, we'll continue with the anonymous configuration.
 
 Next, we'll define some helpful types based on our machine. We use [XState typegen](https://xstate.js.org/docs/guides/typescript.html)
 (`npm run xstate typegen <machine>.ts`) to generate exact types for our state machine and rely on them for end-to-end typesafety and autocomplete
@@ -83,13 +95,19 @@ type OnlyPublicContext = Context["public"];
 Now, let's look at our `TicTacToe` component.
 This is the component where we create or connect to the machine instance that controls our game.
 ```javascript
+import { useStateBackedMachine } from "@statebacked/react";
+
 export default function TicTacToe() {
   const { gameId } = useParams();
-  const actor = useMachine<Event, State, Context>(
+  const { actor } = useStateBackedMachine<Event, State, Context>(
     client,
-    "tic-tac-toe-example",
-    gameId!,
-    () => ({ player1Id: getUserId() }),
+    {
+      machineName: "tic-tac-toe-example",
+      instanceName: gameId!,
+      getInitialContext() {
+        return { player1Id: getUserId() };
+      },
+    },
   );
 
   // ...
@@ -99,13 +117,13 @@ export default function TicTacToe() {
 ```
 
 Here, we get the `gameId` from our URL and use that as the name of our machine instance.
-The `useMachine` hook will create the machine instance if it doesn't exist (using the context
-that we provide in the final argument) or will connect to the machine if it's already been
+The `useStateBackedMachine` hook will create the machine instance if it doesn't exist (using the 
+initial context that we provide) or will connect to the machine if it's already been
 created.
-`useMachine` returns an `Actor` that matches the actors that XState creates from its `useMachine` hook.
+`useStateBackedMachine` returns an `Actor` that matches the actors that XState creates from its `useMachine` hook.
 That's critical because that means that we can use the exact same `useActor` hook from XState
 to subscribe to the state of our remote, State Backed machine instance.
-Under the hood, our `useMachine` has established an auto-reconnecting WebSocket with the State Backed
+Under the hood, our `useStateBackedMachine` has established an auto-reconnecting WebSocket with the State Backed
 backend and subscribed to all state updates for our machine instance.
 This means that we'll have all state updates pushed to us within a few milliseconds of being recorded.
 
@@ -185,7 +203,7 @@ function GameBoard({
 ```
 
 That's all there is to our UI. The only State Backed-specific code that we wrote was creating our `StateBackedClient`
-and connecting to our machine instance with `useMachine`. Everything else was vanilla React/XState.
+and connecting to our machine instance with `useStateBackedMachine`. Everything else was vanilla React/XState.
 
 ## Backend
 
@@ -228,14 +246,14 @@ after we cover the main body of the game logic.
   We actually don't just assume that, we **enforce** that in our State Backed authorization logic. Specifically, in our `allowWrite`
   authorizer, we have this [check](https://github.com/statebacked/examples/blob/main/tic-tac-toe/statebacked/src/index.ts#L23):
   ```javascript
-  export const allowWrite: AllowWrite<Context, AuthContext, Event, State> = (env) => {
+  export const allowWrite: AllowWrite<Context, AnonymousAuthContext, Event, State> = (env) => {
     if (env.type === "initialization") {
-        return env.authContext.sub === env.context.player1Id;
+        return env.authContext.sid === env.context.player1Id;
     }
     // ...
   }
   ```
-  This ensures that the machine is initialized with a `context.player1Id` that matches the user ID of the user who's creating the machine.
+  This ensures that the machine is initialized with a `context.player1Id` that matches the session ID of the user who's creating the machine (`sid` is provided by the anonymous token provider).
   Remember, every call to State Backed has a set of claims about the user making that call (the `authContext`) that you can rely on to
   make authorization decisions.
 - Once the machine is created, we hash the player ID and publish the hash (more on that below) and then we wait for a second player to
@@ -243,10 +261,10 @@ after we cover the main body of the game logic.
 - We have an authorization [check](https://github.com/statebacked/examples/blob/main/tic-tac-toe/statebacked/src/index.ts#L23) on the
   `join` event to ensure that the user who sends it passes along their correct player ID:
   ```javascript
-  export const allowWrite: AllowWrite<Context, AuthContext, Event, State> = (env) => {
+  export const allowWrite: AllowWrite<Context, AnonymousAuthContext, Event, State> = (env) => {
     // ...
     if (env.event.type === "join") {
-        return env.authContext.sub === env.event.playerId;
+        return env.authContext.sid === env.event.playerId;
     }
     // ...
   }
@@ -258,14 +276,14 @@ after we cover the main body of the game logic.
   authorization decision than a game logic decision, we decided to put this check in our
   [authorizer](https://github.com/statebacked/examples/blob/main/tic-tac-toe/statebacked/src/index.ts#L23), like this:
   ```javascript
-  export const allowWrite: AllowWrite<Context, AuthContext, Event, State> = (env) => {
+  export const allowWrite: AllowWrite<Context, AnonymousAuthContext, Event, State> = (env) => {
     // ...
     if (matchesState("Playing", env.state)) {
       // get the "mark" (x or o) for the player who sent the event
       const playerMark = {
         [env.context.player1Id]: env.context.public.player1Mark,
         [env.context.player2Id]: env.context.public.player2Mark,
-      }[env.authContext.sub];
+      }[env.authContext.sid];
 
       // make sure it's the turn of the player who sent the event
       if (matchesState("Playing.Awaiting x move", env.state)) {
@@ -293,36 +311,6 @@ You typically get to determine what state is exposed to who and who can update t
 often need to resort to writing bespoke backend logic to enforce that a certain series of events must take place in order
 or to ensure that a specific user can take a specific action *in a specific state*.
 With State Backed, this becomes much more natural to express.
-
-<details>
-
-<summary>
-A note about our authentication scheme
-</summary>
-
-State Backed was designed to ensure end-to-end authorization based on authenticated user information *if you want it*.
-Since we're just building a tic tac toe game, not a medical records processor, we decided to make the game fully un-authenticated.
-To do that, we could have created a small state machine to vend JWTs for unauthenticated users but we thought that might complicate
-the example. So, instead, we generate a JWT *client-side* using a public "secret" and configure State Backed to allow us to exchange
-JWTs signed with that secret for State Backed credentials. This would be *totally insecure* if we relied on any data in the JWT since
-clients can freely change the claims they make within these JWTs (they do have the secret after all).
-Instead, the only thing we rely on is a UUID that identifies the player. Then, we treat these player IDs as a secret (since any player
-could mint a JWT to impersonate another player if they knew the other player's player ID).
-Essentially, we need **a** secret: either the JWT signing secret or the player ID.
-Because we chose to keep the player ID secret, we publish a hash of each player ID in the public context of the machine to allow players
-to determine if they are player 1 or player 2 but to still ensure that they can't *impersonate* the other player.
-
-**Please don't ever do this in an app where bad things would happen due to impersonation!**
-
-We are still relying on client-controlled randomness to generate unguessable player IDs and that is not generally a reasonable thing
-to rely on outside of tic tac toe games.
-
-However, assuming reasonable client-provided randomness (we are using `crypto.randomUUID`), an attacker would have to guess a
-122-bit random number to impersonate a different player.
-
-We will put up an example of vending secure, unauthenticated credentials with server-controlled randomness soon!
-
-</details>
 
 # Deployment
 
