@@ -11,7 +11,7 @@ transition retention.
 
 State Backed plans apply to an organization and cover all activity for machines, machine versions, and
 machine instances within that organization.
-You can access your billing information by running `smply billing`.
+You can access your billing information on the [web dashboard](https://www.statebacked.dev) or by running `smply billing`.
 
 ## Pricing dimensions
 
