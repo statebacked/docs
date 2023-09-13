@@ -41,6 +41,13 @@ upon request.
 
 ## Plans
 
+| Plan | Monthly Price | Transition limit | Read limit | Historical data retention | Current data retention |
+|------|---------------|------------------|------------|---------------------------|------------------------|
+| Free | $0            | 1,000            | 10,000     | 7 days                    | Instances live forever |
+| Hobby | $20          | 100,000          | 1,000,000  | 30 days                   | Instances live forever |
+| Business | $200      | 2,500,000        | 25,000,000 | 90 days                   | Instances live forever |
+| Enterprise | [Contact us](mailto:sales@statebacked.dev) | --   | -- | -- | Instances live forever |
+
 ### Free
 
 **State Backed is free for up to 1,000 transitions and 10,000 reads each month with 7 day historical transition retention.**
