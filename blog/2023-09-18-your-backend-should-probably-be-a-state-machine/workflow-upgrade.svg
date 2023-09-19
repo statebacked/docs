@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="230.963 0.96 839.534 944.016" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <g transform="matrix(1, 0, 0, 1, 706.386169, -5.209337)">
+    <rect x="15.111" y="11.169" width="344" height="934" rx="4" ry="4" fill="none" stroke="#ffdf92"/>
+    <svg width="16" height="16" x="37" y="37" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(1, 0, 0, 1, 37, 37)">
+      <g clip-path="url(#clip0_1343_12511)">
+        <path d="M12.278 13.5H3.722C3.04667 13.5 2.5 12.9527 2.5 12.278V3.722C2.5 3.04667 3.04733 2.5 3.722 2.5H12.2773C12.9527 2.5 13.4993 3.04733 13.4993 3.722V12.2773C13.5 12.9527 12.9527 13.5 12.278 13.5V13.5Z" stroke="#FFCF5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_1343_12511">
+          <rect width="16" height="16" fill="white"/>
+        </clipPath>
+      </defs>
+    </svg>
+    <text font-weight="600" x="60.111" y="49.169" width="274" height="10" style="white-space: pre-wrap; font-size: 15px;">Onboarding</text>
+    <path d="M 40.111 56.169 L 334.111 56.169" stroke="#ffdf92"/>
+    <svg x="12" y="12" width="344" height="934" transform="matrix(1, 0, 0, 1, 12, 12)">
+      <rect x="45" y="50" width="254" height="93" rx="4" ry="4" fill="#ffefc919" stroke="#ffdf92"/>
+      <svg width="16" height="16" x="70" y="75" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_1343_12511)">
+          <path d="M12.278 13.5H3.722C3.04667 13.5 2.5 12.9527 2.5 12.278V3.722C2.5 3.04667 3.04733 2.5 3.722 2.5H12.2773C12.9527 2.5 13.4993 3.04733 13.4993 3.722V12.2773C13.5 12.9527 12.9527 13.5 12.278 13.5V13.5Z" stroke="#FFCF5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_1343_12511">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text font-weight="600" x="90" y="88" width="184" height="10" style="white-space: pre-wrap;">Get acquisition channel</text>
+      <path d="M 70 95 L 274 95" stroke="#ffdf92"/>
+      <svg width="16" height="16" x="70" y="102" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_217_22)">
+          <mask id="mask0_217_22" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16" style="mask-type: luminance;">
+            <path d="M16 0H0V16H16V0Z" fill="white"/>
+          </mask>
+          <g mask="url(#mask0_217_22)">
+            <path d="M12.5486 7.71666L8.54124 13.5053C8.1739 14.0353 7.34257 13.776 7.34257 13.1307V9.31533H3.99257C3.4619 9.31533 3.14924 8.71933 3.4519 8.28266L7.45924 2.49399C7.82657 1.96399 8.6579 2.22333 8.6579 2.86866V6.68399H12.0079C12.5379 6.68399 12.8506 7.27999 12.5486 7.71666Z" stroke="#00A3FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <path d="M3 11L5 13" stroke="#00A3FF" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M3 15.0096L4.9997 13.0099" stroke="#00A3FF" stroke-width="1.5" stroke-linecap="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_217_22">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text x="90" y="118" width="184" height="16.2" style="white-space: pre-wrap;">Get acquisition channel</text>
+      <rect x="65" y="313" width="214" height="93" rx="4" ry="4" fill="#ffefc919" stroke="#ffdf92"/>
+      <svg width="16" height="16" x="90" y="338" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_1343_12511)">
+          <path d="M12.278 13.5H3.722C3.04667 13.5 2.5 12.9527 2.5 12.278V3.722C2.5 3.04667 3.04733 2.5 3.722 2.5H12.2773C12.9527 2.5 13.4993 3.04733 13.4993 3.722V12.2773C13.5 12.9527 12.9527 13.5 12.278 13.5V13.5Z" stroke="#FFCF5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_1343_12511">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text font-weight="600" x="110" y="351" width="144" height="10" style="white-space: pre-wrap;">Send welcome email</text>
+      <path d="M 90 358 L 254 358" stroke="#ffdf92"/>
+      <svg width="16" height="16" x="90" y="365" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_217_22)">
+          <mask id="mask0_217_22" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16" style="mask-type: luminance;">
+            <path d="M16 0H0V16H16V0Z" fill="white"/>
+          </mask>
+          <g mask="url(#mask0_217_22)">
+            <path d="M12.5486 7.71666L8.54124 13.5053C8.1739 14.0353 7.34257 13.776 7.34257 13.1307V9.31533H3.99257C3.4619 9.31533 3.14924 8.71933 3.4519 8.28266L7.45924 2.49399C7.82657 1.96399 8.6579 2.22333 8.6579 2.86866V6.68399H12.0079C12.5379 6.68399 12.8506 7.27999 12.5486 7.71666Z" stroke="#00A3FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <path d="M3 11L5 13" stroke="#00A3FF" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M3 15.0096L4.9997 13.0099" stroke="#00A3FF" stroke-width="1.5" stroke-linecap="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_217_22">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text x="110" y="381" width="144" height="16.2" style="white-space: pre-wrap;">Send welcome email</text>
+      <rect x="49" y="576" width="246" height="70" rx="4" ry="4" fill="#ffefc919" stroke="#ffdf92"/>
+      <svg width="16" height="16" x="74" y="603" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_1343_12511)">
+          <path d="M12.278 13.5H3.722C3.04667 13.5 2.5 12.9527 2.5 12.278V3.722C2.5 3.04667 3.04733 2.5 3.722 2.5H12.2773C12.9527 2.5 13.4993 3.04733 13.4993 3.722V12.2773C13.5 12.9527 12.9527 13.5 12.278 13.5V13.5Z" stroke="#FFCF5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_1343_12511">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text font-weight="600" x="94" y="616" width="176" height="10" style="white-space: pre-wrap;">Await first drip email</text>
+      <rect x="53" y="816" width="238" height="93" rx="4" ry="4" fill="#ffefc919" stroke="#ffdf92"/>
+      <svg width="16" height="16" x="78" y="841" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_1343_12511)">
+          <path d="M12.278 13.5H3.722C3.04667 13.5 2.5 12.9527 2.5 12.278V3.722C2.5 3.04667 3.04733 2.5 3.722 2.5H12.2773C12.9527 2.5 13.4993 3.04733 13.4993 3.722V12.2773C13.5 12.9527 12.9527 13.5 12.278 13.5V13.5Z" stroke="#FFCF5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_1343_12511">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text font-weight="600" x="98" y="854" width="168" height="10" style="white-space: pre-wrap;">Send first drip email</text>
+      <path d="M 78 861 L 266 861" stroke="#ffdf92"/>
+      <svg width="16" height="16" x="78" y="868" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_217_22)">
+          <mask id="mask0_217_22" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16" style="mask-type: luminance;">
+            <path d="M16 0H0V16H16V0Z" fill="white"/>
+          </mask>
+          <g mask="url(#mask0_217_22)">
+            <path d="M12.5486 7.71666L8.54124 13.5053C8.1739 14.0353 7.34257 13.776 7.34257 13.1307V9.31533H3.99257C3.4619 9.31533 3.14924 8.71933 3.4519 8.28266L7.45924 2.49399C7.82657 1.96399 8.6579 2.22333 8.6579 2.86866V6.68399H12.0079C12.5379 6.68399 12.8506 7.27999 12.5486 7.71666Z" stroke="#00A3FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <path d="M3 11L5 13" stroke="#00A3FF" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M3 15.0096L4.9997 13.0099" stroke="#00A3FF" stroke-width="1.5" stroke-linecap="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_217_22">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text x="98" y="884" width="168" height="16.2" style="white-space: pre-wrap;">Send first drip email</text>
+      <rect x="25" y="193" width="294" height="70" rx="4" ry="4" fill="#cebdff66" stroke="#a88aff"/>
+      <svg width="16" height="16" x="50" y="220" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_1343_12529)">
+          <path d="M5.37063 7.99998L3.18317 10.1876C2.93894 10.4318 2.93894 10.8272 3.18317 11.0709L4.92902 12.8168C5.17325 13.0611 5.56864 13.0611 5.81225 12.8168L7.99971 10.6292L9.30894 11.9385C9.63749 12.2671 10.1965 12.1347 10.3433 11.6943L12.9668 3.82281C13.1298 3.33494 12.6651 2.87018 12.1766 3.03322L4.30564 5.65684C3.86527 5.80364 3.73285 6.36272 4.06141 6.6913L5.37063 7.99998Z" stroke="#8753DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_1343_12529">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text font-weight="600" x="70" y="233" width="224" height="10" style="white-space: pre-wrap;">Acquisition channel received</text>
+      <rect x="65" y="456" width="214" height="70" rx="4" ry="4" fill="#cebdff66" stroke="#a88aff"/>
+      <svg width="16" height="16" x="90" y="483" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_1343_12529)">
+          <path d="M5.37063 7.99998L3.18317 10.1876C2.93894 10.4318 2.93894 10.8272 3.18317 11.0709L4.92902 12.8168C5.17325 13.0611 5.56864 13.0611 5.81225 12.8168L7.99971 10.6292L9.30894 11.9385C9.63749 12.2671 10.1965 12.1347 10.3433 11.6943L12.9668 3.82281C13.1298 3.33494 12.6651 2.87018 12.1766 3.03322L4.30564 5.65684C3.86527 5.80364 3.73285 6.36272 4.06141 6.6913L5.37063 7.99998Z" stroke="#8753DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_1343_12529">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text font-weight="600" x="110" y="496" width="144" height="10" style="white-space: pre-wrap;">Sent welcome email</text>
+      <rect x="93" y="696" width="158" height="70" rx="4" ry="4" fill="#cebdff66" stroke="#a88aff"/>
+      <svg width="16" height="16" x="118" y="723" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_1343_12529)">
+          <path d="M5.37063 7.99998L3.18317 10.1876C2.93894 10.4318 2.93894 10.8272 3.18317 11.0709L4.92902 12.8168C5.17325 13.0611 5.56864 13.0611 5.81225 12.8168L7.99971 10.6292L9.30894 11.9385C9.63749 12.2671 10.1965 12.1347 10.3433 11.6943L12.9668 3.82281C13.1298 3.33494 12.6651 2.87018 12.1766 3.03322L4.30564 5.65684C3.86527 5.80364 3.73285 6.36272 4.06141 6.6913L5.37063 7.99998Z" stroke="#8753DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_1343_12529">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text font-weight="600" x="138" y="736" width="88" height="10" style="white-space: pre-wrap;">After 1 day</text>
+      <svg x1="0" y1="0" width="100%" height="100%">
+        <g>
+          <defs>
+            <marker id="end-flow-0" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="0" refY="5" markerUnits="strokeWidth" orient="auto">
+              <path stroke="none" fill="#8753dd" d="M0,0 h5 q5,0 5,5 q0,5 -5,5 h-5 z"/>
+              <path stroke-width="1" stroke="#000" d="M0,5 h4"/>
+              <circle cx="4" cy="5" r="2"/>
+            </marker>
+            <marker id="start-flow-0" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="0" refY="5" markerUnits="strokeWidth" orient="auto">
+              <path stroke="none" fill="#ffcf5c" d="M0,0 h5 q5,0 5,5 q0,5 -5,5 h-5 z"/>
+              <path stroke-width="1" stroke="#000" d="M0,5 h4"/>
+              <circle cx="4" cy="5" r="2"/>
+            </marker>
+          </defs>
+          <path stroke="#000" stroke-width="2" fill="none" d="M 172,143 L 172,143 L 172,193" marker-end="url(#end-flow-0)"/>
+          <path stroke="none" stroke-width="2" fill="none" d="M 172,193 L 172,193 L 172,143" marker-end="url(#start-flow-0)"/>
+        </g>
+        <g>
+          <defs>
+            <marker id="end-flow-1" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="0" refY="5" markerUnits="strokeWidth" orient="auto">
+              <path stroke="none" fill="#ffcf5c" d="M0,0 h5 q5,0 5,5 q0,5 -5,5 h-5 z"/>
+              <path stroke="none" fill="#000" d="M1.43,5 L2,5 L2,2 L8.57,5 L2,8.57 L2,5 z"/>
+              <path stroke="#000" fill="none" stroke-width="1" d="M0,5 L2,5"/>
+            </marker>
+            <marker id="start-flow-1" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="0" refY="5" markerUnits="strokeWidth" orient="auto">
+              <path stroke="none" fill="#8753dd" d="M0,0 h5 q5,0 5,5 q0,5 -5,5 h-5 z"/>
+              <path stroke-width="1" stroke="#000" d="M0,5 h4"/>
+              <circle cx="4" cy="5" r="2"/>
+            </marker>
+          </defs>
+          <path stroke="#000" stroke-width="2" fill="none" d="M 172,263 L 172,263 L 172,313" marker-end="url(#end-flow-1)"/>
+          <path stroke="none" stroke-width="2" fill="none" d="M 172,313 L 172,313 L 172,263" marker-end="url(#start-flow-1)"/>
+        </g>
+        <g>
+          <defs>
+            <marker id="end-flow-2" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="0" refY="5" markerUnits="strokeWidth" orient="auto">
+              <path stroke="none" fill="#8753dd" d="M0,0 h5 q5,0 5,5 q0,5 -5,5 h-5 z"/>
+              <path stroke-width="1" stroke="#000" d="M0,5 h4"/>
+              <circle cx="4" cy="5" r="2"/>
+            </marker>
+            <marker id="start-flow-2" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="0" refY="5" markerUnits="strokeWidth" orient="auto">
+              <path stroke="none" fill="#ffcf5c" d="M0,0 h5 q5,0 5,5 q0,5 -5,5 h-5 z"/>
+              <path stroke-width="1" stroke="#000" d="M0,5 h4"/>
+              <circle cx="4" cy="5" r="2"/>
+            </marker>
+          </defs>
+          <path stroke="#000" stroke-width="2" fill="none" d="M 172,406 L 172,406 L 172,456" marker-end="url(#end-flow-2)"/>
+          <path stroke="none" stroke-width="2" fill="none" d="M 172,456 L 172,456 L 172,406" marker-end="url(#start-flow-2)"/>
+        </g>
+        <g>
+          <defs>
+            <marker id="end-flow-3" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="0" refY="5" markerUnits="strokeWidth" orient="auto">
+              <path stroke="none" fill="#ffcf5c" d="M0,0 h5 q5,0 5,5 q0,5 -5,5 h-5 z"/>
+              <path stroke="none" fill="#000" d="M1.43,5 L2,5 L2,2 L8.57,5 L2,8.57 L2,5 z"/>
+              <path stroke="#000" fill="none" stroke-width="1" d="M0,5 L2,5"/>
+            </marker>
+            <marker id="start-flow-3" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="0" refY="5" markerUnits="strokeWidth" orient="auto">
+              <path stroke="none" fill="#8753dd" d="M0,0 h5 q5,0 5,5 q0,5 -5,5 h-5 z"/>
+              <path stroke-width="1" stroke="#000" d="M0,5 h4"/>
+              <circle cx="4" cy="5" r="2"/>
+            </marker>
+          </defs>
+          <path stroke="#000" stroke-width="2" fill="none" d="M 172,526 L 172,526 L 172,576" marker-end="url(#end-flow-3)"/>
+          <path stroke="none" stroke-width="2" fill="none" d="M 172,576 L 172,576 L 172,526" marker-end="url(#start-flow-3)"/>
+        </g>
+        <g>
+          <defs>
+            <marker id="end-flow-4" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="0" refY="5" markerUnits="strokeWidth" orient="auto">
+              <path stroke="none" fill="#8753dd" d="M0,0 h5 q5,0 5,5 q0,5 -5,5 h-5 z"/>
+              <path stroke-width="1" stroke="#000" d="M0,5 h4"/>
+              <circle cx="4" cy="5" r="2"/>
+            </marker>
+            <marker id="start-flow-4" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="0" refY="5" markerUnits="strokeWidth" orient="auto">
+              <path stroke="none" fill="#ffcf5c" d="M0,0 h5 q5,0 5,5 q0,5 -5,5 h-5 z"/>
+              <path stroke-width="1" stroke="#000" d="M0,5 h4"/>
+              <circle cx="4" cy="5" r="2"/>
+            </marker>
+          </defs>
+          <path stroke="#000" stroke-width="2" fill="none" d="M 172,646 L 172,646 L 172,696" marker-end="url(#end-flow-4)"/>
+          <path stroke="none" stroke-width="2" fill="none" d="M 172,696 L 172,696 L 172,646" marker-end="url(#start-flow-4)"/>
+        </g>
+        <g>
+          <defs>
+            <marker id="end-flow-5" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="0" refY="5" markerUnits="strokeWidth" orient="auto">
+              <path stroke="none" fill="#ffcf5c" d="M0,0 h5 q5,0 5,5 q0,5 -5,5 h-5 z"/>
+              <path stroke="none" fill="#000" d="M1.43,5 L2,5 L2,2 L8.57,5 L2,8.57 L2,5 z"/>
+              <path stroke="#000" fill="none" stroke-width="1" d="M0,5 L2,5"/>
+            </marker>
+            <marker id="start-flow-5" viewBox="0 0 10 10" markerWidth="7" markerHeight="7" refX="0" refY="5" markerUnits="strokeWidth" orient="auto">
+              <path stroke="none" fill="#8753dd" d="M0,0 h5 q5,0 5,5 q0,5 -5,5 h-5 z"/>
+              <path stroke-width="1" stroke="#000" d="M0,5 h4"/>
+              <circle cx="4" cy="5" r="2"/>
+            </marker>
+          </defs>
+          <path stroke="#000" stroke-width="2" fill="none" d="M 172,766 L 172,766 L 172,816" marker-end="url(#end-flow-5)"/>
+          <path stroke="none" stroke-width="2" fill="none" d="M 172,816 L 172,816 L 172,766" marker-end="url(#start-flow-5)"/>
+        </g>
+        <g>
+          <defs>
+            <marker id="n455" viewBox="0 0 10 10" markerWidth="3" markerHeight="3" refX="0" refY="5" markerUnits="strokeWidth" orient="auto">
+              <path d="M0,0 L0,10 L10,5 z" data-viz="edge-arrow"/>
+            </marker>
+          </defs>
+          <circle r="3" cx="34.5" cy="50" fill="#000"/>
+          <path d="M 34.5,50 Q 34.5,57 38,57 L 39, 57" stroke="#000" stroke-width="2" fill="none" marker-end="url(#n455)" pathLength="1"/>
+        </g>
+      </svg>
+    </svg>
+    <svg x1="0" y1="0" width="100%" height="100%"/>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, 224.589172, 257.341278)">
+    <rect x="11.374" y="11.634" width="296" height="671" rx="4" ry="4" fill="none" stroke="#ffdf92"/>
+    <svg width="16" height="16" x="37" y="37" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(1, 0, 0, 1, 37, 37)">
+      <g clip-path="url(#clip-1)">
+        <path d="M12.278 13.5H3.722C3.04667 13.5 2.5 12.9527 2.5 12.278V3.722C2.5 3.04667 3.04733 2.5 3.722 2.5H12.2773C12.9527 2.5 13.4993 3.04733 13.4993 3.722V12.2773C13.5 12.9527 12.9527 13.5 12.278 13.5V13.5Z" stroke="#FFCF5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs>
+        <clipPath id="clip-1">
+          <rect width="16" height="16" fill="white"/>
+        </clipPath>
+      </defs>
+    </svg>
+    <text font-weight="600" x="56.374" y="49.634" width="226" height="10" style="white-space: pre-wrap; font-size: 15px;">Onboarding</text>
+    <path d="M 36.374 56.634 L 282.374 56.634" stroke="#ffdf92"/>
+    <svg x="12" y="12" width="296" height="671" transform="matrix(1, 0, 0, 1, 12, 12)">
+      <rect x="41" y="50" width="214" height="93" rx="4" ry="4" fill="#ffefc919" stroke="#ffdf92"/>
+      <svg width="16" height="16" x="66" y="75" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip-1)">
+          <path d="M12.278 13.5H3.722C3.04667 13.5 2.5 12.9527 2.5 12.278V3.722C2.5 3.04667 3.04733 2.5 3.722 2.5H12.2773C12.9527 2.5 13.4993 3.04733 13.4993 3.722V12.2773C13.5 12.9527 12.9527 13.5 12.278 13.5V13.5Z" stroke="#FFCF5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip-1">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text font-weight="600" x="86" y="88" width="144" height="10" style="white-space: pre-wrap;">Send welcome email</text>
+      <path d="M 66 95 L 230 95" stroke="#ffdf92"/>
+      <svg width="16" height="16" x="66" y="102" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip-2)">
+          <mask id="mask-1" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16" style="mask-type: luminance;">
+            <path d="M16 0H0V16H16V0Z" fill="white"/>
+          </mask>
+          <g mask="url(#mask-1)">
+            <path d="M12.5486 7.71666L8.54124 13.5053C8.1739 14.0353 7.34257 13.776 7.34257 13.1307V9.31533H3.99257C3.4619 9.31533 3.14924 8.71933 3.4519 8.28266L7.45924 2.49399C7.82657 1.96399 8.6579 2.22333 8.6579 2.86866V6.68399H12.0079C12.5379 6.68399 12.8506 7.27999 12.5486 7.71666Z" stroke="#00A3FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <path d="M3 11L5 13" stroke="#00A3FF" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M3 15.0096L4.9997 13.0099" stroke="#00A3FF" stroke-width="1.5" stroke-linecap="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip-2">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text x="86" y="118" width="144" height="16.2" style="white-space: pre-wrap;">Send welcome email</text>
+      <rect x="25" y="313" width="246" height="70" rx="4" ry="4" fill="#ffefc919" stroke="#ffdf92"/>
+      <svg width="16" height="16" x="50" y="340" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip-1)">
+          <path d="M12.278 13.5H3.722C3.04667 13.5 2.5 12.9527 2.5 12.278V3.722C2.5 3.04667 3.04733 2.5 3.722 2.5H12.2773C12.9527 2.5 13.4993 3.04733 13.4993 3.722V12.2773C13.5 12.9527 12.9527 13.5 12.278 13.5V13.5Z" stroke="#FFCF5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip-1">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text font-weight="600" x="70" y="353" width="176" height="10" style="white-space: pre-wrap;">Await first drip email</text>
+      <rect x="29" y="553" width="238" height="93" rx="4" ry="4" fill="#ffefc919" stroke="#ffdf92"/>
+      <svg width="16" height="16" x="54" y="578" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip-1)">
+          <path d="M12.278 13.5H3.722C3.04667 13.5 2.5 12.9527 2.5 12.278V3.722C2.5 3.04667 3.04733 2.5 3.722 2.5H12.2773C12.9527 2.5 13.4993 3.04733 13.4993 3.722V12.2773C13.5 12.9527 12.9527 13.5 12.278 13.5V13.5Z" stroke="#FFCF5C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip-1">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text font-weight="600" x="74" y="591" width="168" height="10" style="white-space: pre-wrap;">Send first drip email</text>
+      <path d="M 54 598 L 242 598" stroke="#ffdf92"/>
+      <svg width="16" height="16" x="54" y="605" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip-2)">
+          <mask id="mask-1" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16" style="mask-type: luminance;">
+            <path d="M16 0H0V16H16V0Z" fill="white"/>
+          </mask>
+          <g mask="url(#mask-1)">
+            <path d="M12.5486 7.71666L8.54124 13.5053C8.1739 14.0353 7.34257 13.776 7.34257 13.1307V9.31533H3.99257C3.4619 9.31533 3.14924 8.71933 3.4519 8.28266L7.45924 2.49399C7.82657 1.96399 8.6579 2.22333 8.6579 2.86866V6.68399H12.0079C12.5379 6.68399 12.8506 7.27999 12.5486 7.71666Z" stroke="#00A3FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <path d="M3 11L5 13" stroke="#00A3FF" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M3 15.0096L4.9997 13.0099" stroke="#00A3FF" stroke-width="1.5" stroke-linecap="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip-2">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text x="74" y="621" width="168" height="16.2" style="white-space: pre-wrap;">Send first drip email</text>
+      <rect x="41" y="193" width="214" height="70" rx="4" ry="4" fill="#cebdff66" stroke="#a88aff"/>
+      <svg width="16" height="16" x="66" y="220" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip-3)">
+          <path d="M5.37063 7.99998L3.18317 10.1876C2.93894 10.4318 2.93894 10.8272 3.18317 11.0709L4.92902 12.8168C5.17325 13.0611 5.56864 13.0611 5.81225 12.8168L7.99971 10.6292L9.30894 11.9385C9.63749 12.2671 10.1965 12.1347 10.3433 11.6943L12.9668 3.82281C13.1298 3.33494 12.6651 2.87018 12.1766 3.03322L4.30564 5.65684C3.86527 5.80364 3.73285 6.36272 4.06141 6.6913L5.37063 7.99998Z" stroke="#8753DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip-3">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text font-weight="600" x="86" y="233" width="144" height="10" style="white-space: pre-wrap;">Sent welcome email</text>
+      <rect x="69" y="433" width="158" height="70" rx="4" ry="4" fill="#cebdff66" stroke="#a88aff"/>
+      <svg width="16" height="16" x="94" y="460" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip-3)">
+          <path d="M5.37063 7.99998L3.18317 10.1876C2.93894 10.4318 2.93894 10.8272 3.18317 11.0709L4.92902 12.8168C5.17325 13.0611 5.56864 13.0611 5.81225 12.8168L7.99971 10.6292L9.30894 11.9385C9.63749 12.2671 10.1965 12.1347 10.3433 11.6943L12.9668 3.82281C13.1298 3.33494 12.6651 2.87018 12.1766 3.03322L4.30564 5.65684C3.86527 5.80364 3.73285 6.36272 4.06141 6.6913L5.37063 7.99998Z" stroke="#8753DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip-3">
+            <rect width="16" height="16" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+      <text font-weight="600" x="114" y="473" width="88" height="10" style="white-space: pre-wrap;">After 1 day</text>
+      <svg x1="0" y1="0" width="100%" height="100%">
+        <g>
+          <path stroke="#000" stroke-width="2" fill="none" d="M 148,143 L 148,143 L 148,193" marker-end="url(#end-flow-0)"/>
+          <path stroke="none" stroke-width="2" fill="none" d="M 148,193 L 148,193 L 148,143" marker-end="url(#start-flow-0)"/>
+        </g>
+        <g>
+          <path stroke="#000" stroke-width="2" fill="none" d="M 148,263 L 148,263 L 148,313" marker-end="url(#end-flow-1)"/>
+          <path stroke="none" stroke-width="2" fill="none" d="M 148,313 L 148,313 L 148,263" marker-end="url(#start-flow-1)"/>
+        </g>
+        <g>
+          <path stroke="#000" stroke-width="2" fill="none" d="M 148,383 L 148,383 L 148,433" marker-end="url(#end-flow-2)"/>
+          <path stroke="none" stroke-width="2" fill="none" d="M 148,433 L 148,433 L 148,383" marker-end="url(#start-flow-2)"/>
+        </g>
+        <g>
+          <path stroke="#000" stroke-width="2" fill="none" d="M 148,503 L 148,503 L 148,553" marker-end="url(#end-flow-3)"/>
+          <path stroke="none" stroke-width="2" fill="none" d="M 148,553 L 148,553 L 148,503" marker-end="url(#start-flow-3)"/>
+        </g>
+        <g>
+          <defs>
+            <marker id="n891" viewBox="0 0 10 10" markerWidth="3" markerHeight="3" refX="0" refY="5" markerUnits="strokeWidth" orient="auto">
+              <path d="M0,0 L0,10 L10,5 z" data-viz="edge-arrow"/>
+            </marker>
+          </defs>
+          <circle r="3" cx="30.5" cy="50" fill="#000"/>
+          <path d="M 30.5,50 Q 30.5,57 34,57 L 35, 57" stroke="#000" stroke-width="2" fill="none" marker-end="url(#n891)" pathLength="1"/>
+        </g>
+      </svg>
+    </svg>
+    <svg x1="0" y1="0" width="100%" height="100%"/>
+  </g>
+  <g>
+    <path d="M 513.609 360.741 H 741.952 L 741.952 351.241 L 770.952 362.241 L 741.952 373.241 L 741.952 363.741 H 513.609 V 360.741 Z" style="paint-order: fill; fill: rgb(0, 196, 140); stroke: rgb(0, 196, 140);" transform="matrix(0.999992, 0.004049, -0.004049, 0.999992, 1.470761, -2.076401)" bx:shape="arrow 513.609 351.241 257.343 22 3 29 0 1@f5696771"/>
+    <text style="fill: rgb(0, 196, 140); font-family: Arial, sans-serif; font-size: 29.2px; white-space: pre;" x="515.693" y="394.539">upgrade mapping</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -7.814201, 253.98526)">
+    <path d="M 513.609 360.741 H 741.952 L 741.952 351.241 L 770.952 362.241 L 741.952 373.241 L 741.952 363.741 H 513.609 V 360.741 Z" style="paint-order: fill; fill: rgb(0, 196, 140); stroke: rgb(0, 196, 140);" transform="matrix(0.999992, 0.004049, -0.004049, 0.999992, 1.470761, -2.076401)" bx:shape="arrow 513.609 351.241 257.343 22 3 29 0 1@f5696771"/>
+    <text style="fill: rgb(0, 196, 140); font-family: Arial, sans-serif; font-size: 29.2px; white-space: pre;" x="515.693" y="394.539">upgrade mapping</text>
+  </g>
+  <g transform="matrix(1, 0, 0, 1, -8.856104, 505.075348)">
+    <path d="M 513.609 360.741 H 741.952 L 741.952 351.241 L 770.952 362.241 L 741.952 373.241 L 741.952 363.741 H 513.609 V 360.741 Z" style="paint-order: fill; fill: rgb(0, 196, 140); stroke: rgb(0, 196, 140);" transform="matrix(0.999992, 0.004049, -0.004049, 0.999992, 1.470761, -2.076401)" bx:shape="arrow 513.609 351.241 257.343 22 3 29 0 1@f5696771"/>
+    <text style="fill: rgb(0, 196, 140); font-family: Arial, sans-serif; font-size: 29.2px; white-space: pre;" x="515.693" y="394.539">upgrade mapping</text>
+  </g>
+</svg>
