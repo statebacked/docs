@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'State Backed',
-  tagline: 'Deploy invincible XState state machines to the cloud in one command, connect from any client in two lines of code, and scale to millions of users.',
+  tagline: 'Deploy any state machine as an invincible cloud actor with one command and connect from any client in two lines of code',
   favicon: 'img/favicon.png',
 
   // Set the production url of your site here
