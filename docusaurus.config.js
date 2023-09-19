@@ -78,7 +78,7 @@ const config = {
         items: [
           {
             href: "https://statebacked.dev",
-            label: "Join State Backed",
+            label: "Try State Backed",
           },
           {
             type: 'docSidebar',
