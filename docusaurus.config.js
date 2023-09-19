@@ -77,6 +77,10 @@ const config = {
         },
         items: [
           {
+            href: "https://statebacked.dev",
+            label: "Join State Backed",
+          },
+          {
             type: 'docSidebar',
             sidebarId: 'docsSidebar',
             position: 'left',
@@ -101,7 +105,7 @@ const config = {
                 to: '/docs/intro',
               },
               {
-                label: "State Backed",
+                label: "State Backed Dashboard",
                 href: "https://statebacked.dev"
               },
               {
@@ -109,13 +113,13 @@ const config = {
                 href: "https://api-docs.statebacked.dev"
               },
               {
+                label: "Client library API reference",
+                href: "https://statebacked.github.io/client-js/"
+              },
+              {
                 label: "Types for machine definitions and migrations",
                 href: "https://statebacked.github.io/machine-def/"
               },
-              {
-                label: "Client library API reference",
-                href: "https://statebacked.github.io/client-js/"
-              }
             ],
           },
           {
@@ -139,12 +143,12 @@ const config = {
                 to: '/blog',
               },
               {
-                label: 'Client library',
-                href: 'https://github.com/statebacked/client-js',
+                label: "Pricing",
+                to: "/docs/pricing"
               },
               {
-                label: 'Token generation library',
-                href: 'https://github.com/statebacked/token',
+                label: 'Client library',
+                href: 'https://github.com/statebacked/client-js',
               },
               {
                 label: 'smply CLI',
