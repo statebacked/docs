@@ -225,7 +225,7 @@ After thinking about this pattern for a long time, we built [State Backed](https
     `}
     </style>
     <div id="mc_embed_signup">
-        <form action="https://teampando.us8.list-manage.com/subscribe/post?u=dec43cbfe556d982657100961&amp;id=3616b8513f&amp;f_id=00cb72e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank">
+        <form action="https://teampando.us8.list-manage.com/subscribe/post?u=dec43cbfe556d982657100961&id=3616b8513ff_id=00cb72e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank">
         <div id="mc_embed_signup_scroll"><h2>Stay up to date with the latest from State Backed</h2>
             <div className="indicates-required"><span className="asterisk">*</span> indicates required</div>
             <div className="mc-field-group"><label htmlFor="mce-EMAIL">Email Address <span className="asterisk">*</span></label><input type="email" name="EMAIL" className="required email" id="mce-EMAIL" required={true} defaultValue="" /><span id="mce-EMAIL-HELPERTEXT" className="helper_text"></span></div>
