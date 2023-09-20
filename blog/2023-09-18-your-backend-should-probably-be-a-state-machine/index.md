@@ -118,11 +118,11 @@ Which brings us to our second class of system…
 
 Workflows are distinguished by being primarily self-driven. They may wait on some external event occasionally, but the primary impetus driving them forward is the completion of some process or timer they started.
 
-The fundamental problem with workflows is that computers run code as processes and, while processes are permanent(ish) at the timescale of a request, they are decidedly ephemeral at the timescale of a long-lived workflow. We used to string together cron jobs, queues, and watchdogs to ensure forward progress in the face of machine and process failures. That made things work but created a mess - as with the “decoupled” endpoints we saw above, there was no cohesion to the separately-deployed dependencies.
+The fundamental problem with workflows is that computers run code as processes and, while processes are permanent(ish) at the timescale of a request, they are decidedly ephemeral at the timescale of a long-lived workflow. We used to string together cron jobs, queues, and watchdogs to ensure forward progress in the face of machine and process failures. That made things work but created a mess - as with the “decoupled” endpoints we saw above, there was no cohesion to the separately-deployed dependencies. All of the above arguments for building more cohesive systems apply doubly so for workflows built around queues, event buses, and timers - understanding a system from those parts demands top-rate detective work.
 
 ### Workflow engines and the clever hack
 
-In the past few years, we’ve seen the rise of the cohesive workflow as an abstraction in its own right. Just write code and let the workflow engine deal with reliably running on top of unreliable processes. Wonderful! Except that nearly all such platforms suffer from two major flaws: a lack of upgradability and embracing an iffy, leaky abstraction.
+In the past few years, we’ve seen the rise of the cohesive workflow as an abstraction in its own right[^2]. Just write code and let the workflow engine deal with reliably running on top of unreliable processes. Wonderful! Except that nearly all such platforms suffer from two major flaws: a lack of upgradability and embracing an iffy, leaky abstraction.
 
 There is only one constant across every software project I’ve seen: change. We’ve created this infinitely malleable construct and - of course! - we’re going to take advantage of its amazing ability to change. But there is no coherent upgrade story for *any* major workflow platform. After kicking off a job that’s going to run for a year, there’s no reasonable way to change how it works!
 
@@ -165,7 +165,7 @@ export async function OnboardingWorkflow(email: string) {
 
 Nope! If a user has already passed the `sendWelcomeEmail` step, workflow execution engines have no choice but to throw an error or send a second welcome email with this change. Let’s see why.
 
-The first time the workflow runs the first version of our workflow, the engine will execute the `sendWelcomeEmail` activity and store its result, then execute the `sleep` activity, which will register a timer and then throw an exception to stop the execution. After the timer elapses, the engine has no way[^2] to jump to the line of code after our call to `sleep`. Instead, it starts at the very top again and uses stored results for any functions it already executed. It *has* to do this because there’s no other way to rebuild all of the program state that we might depend on (e.g. local variables, global variables, arbitrary pointers, etc.). Instead, we’ll need to write our updated version more like this:
+The first time the workflow runs the first version of our workflow, the engine will execute the `sendWelcomeEmail` activity and store its result, then execute the `sleep` activity, which will register a timer and then throw an exception to stop the execution. After the timer elapses, the engine has no way[^3] to jump to the line of code after our call to `sleep`. Instead, it starts at the very top again and uses stored results for any functions it already executed. It *has* to do this because there’s no other way to rebuild all of the program state that we might depend on (e.g. local variables, global variables, arbitrary pointers, etc.). Instead, we’ll need to write our updated version more like this:
 
 ```javascript
 export async function OnboardingWorkflow(email: string) {
@@ -257,4 +257,6 @@ After thinking about this pattern for a long time, we built [State Backed](https
 
 [^1]: Technically, we’re talking about statecharts throughout this article because we want the expressivity benefits of hierarchical and concurrent states. We’ll use the more common term just for familiarity.
 
-[^2]: The only exception we’re aware of is [Golem](https://www.golem.cloud/platform), a workflow engine built around Web Assembly. You can't snapshot the memory of a regular process and restore it but, because of Web Assembly’s sandbox model, they are able to capture the full program state and do actual resumption. This is a beautiful abstraction for resumption but doesn't address upgrading running instances.
+[^2]: This was pioneered by platforms like [Cadence](https://cadenceworkflow.io/docs/concepts/workflows). These platforms were a *huge* leap forward for proactive system design because they enabled cohesion in this type of software for the first time. The fact that we believe that state machines are a more suitable abstraction doesn't detract at all from the amazing advance that these platforms made.
+
+[^3]: The only exception we’re aware of is [Golem](https://www.golem.cloud/platform), a workflow engine built around Web Assembly. You can't snapshot the memory of a regular process and restore it but, because of Web Assembly’s sandbox model, they are able to capture the full program state and do actual resumption. This is a beautiful abstraction for resumption but doesn't address upgrading running instances.
