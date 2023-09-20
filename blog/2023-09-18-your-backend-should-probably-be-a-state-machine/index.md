@@ -6,7 +6,7 @@ That's because any time you have a set of steps with some ordering between them,
 
 On the frontend, it’s a bit easier to squint and see the states and events you’re modeling. After all, you actually talk about transitions and “paths” the user can take through your app. The mapping from the familiar world of screens and popups and nested components to the language of hierarchical states and transitions is fairly straightforward. So, thankfully, we’ve seen more and more (though not yet enough!) adoption of state machines for modeling frontend flows.
 
-On the backend, however, while it’s just as true that many of the systems we build are implicitly state machines, I’ve yet to see too many teams explicitly model them that way.
+On the backend, however, while it’s just as true that many of the systems we build are implicitly state machines, I’ve yet to see many teams explicitly model them that way.
 
 I get it. Backend concerns seem quite different. Whiteboards in conference rooms around backend-focused teams are covered in boxes and arrows depicting information flows and architectural dependencies rather than states and transitions.
 
@@ -68,7 +68,7 @@ We’ll simplify the flow to this: users submit an order, we offer it to the res
 
 To build that in a traditional way, we’ll probably want an order service with endpoints for users to create an order, restaurants to accept an order, couriers to accept a delivery and mark it complete, and timers to notify us that they’ve elapsed.
 
-That is, to wildly simplify what was, in my past job, a few hundred person-years of work, you likely put together some code structured like this:
+To wildly simplify what was, in my past job, a few hundred person-years of work, you likely put together some code structured like this:
 
 ![Endpoint files](./endpoint-files.png)
 
