@@ -84,11 +84,11 @@ It *looks like* those endpoints sitting in their separate files are decoupled bu
 
 In short, to be correct, each endpoint must validate aspects of the overall flow so, to coherently understand this system, we need to think about the whole thing - we can't really understand any part in isolation. The overall *process* is what our customers are paying for, not a set of endpoints. Having spent many sleepless nights attending to outages within just such a system, I know first-hand that seemingly innocent changes to a supposedly isolated endpoint can have unintended consequences that ripple through the entire system.
 
-Basically, all of the critical structure *around* and *between* the endpoints that jumps right out at us in the state machine is completely hidden and hard to extract from the "de-coupled" endpoints.
+Basically, all of the critical structure *around* and *between* the endpoints that jumps right out at us in the state machine is completely hidden and hard to extract from the "decoupled" endpoints.
 
 Now, let’s imagine an all-too real request: after building this system, our business team decides that we could offer wider selection faster if we send couriers out to buy items from restaurants we have no relationship with (and, therefore, no way to send orders to directly).
 
-With that feature, we’ve broken all of the assumptions buried in our supposedly de-coupled endpoints. Now, couriers get dispatched first and orders are accepted or rejected after the courier is on their way.
+With that feature, we’ve broken all of the assumptions buried in our supposedly decoupled endpoints. Now, couriers get dispatched first and orders are accepted or rejected after the courier is on their way.
 
 With the traditional structure, we satisfy this new requirement by painstakingly spelunking through each of our endpoints and peppering in the appropriate conditionals, hoping that, in the process, we don’t disrupt the regular orders flowing through our system.
 
