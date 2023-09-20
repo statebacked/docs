@@ -36,7 +36,7 @@ We’ll talk about exactly how state machines will help us solve the major class
 
 Let's break that down.
 
-1. **Constraints** are actually good. Like, really good. We’re all trying to build systems that perform tasks that people care about and operate in ways that we can understand, not least because we’d really like to fix them when they misbehave. Unconstrained code leaves no bulwark between our too-burdened brains and the chaos of executing 60 billion arbitrary operations per core every second. We all [consider GOTOs harmful](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf) because Djikstra convinced us that we should aim to “make the correspondence between the program (spread out in text space) and the process (spread out in time) as trivial as possible.”
+1. **Constraints** are actually good. Like, really good. We’re all trying to build systems that perform tasks that people care about and operate in ways that we can understand, not least because we’d really like to fix them when they misbehave. Unconstrained code leaves no bulwark between our too-burdened brains and the chaos of executing billions of arbitrary operations per core every second. We all [consider GOTOs harmful](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf) because Djikstra convinced us that we should aim to "make the correspondence between the program (spread out in text space) and the process (spread out in time) as trivial as possible."
 
     There are few better ways to simplify the correspondence between what your program looks like and what it does than by constraining your program’s high-level structure to a state machine. With that reasonable constraint in place, it suddenly becomes trivial to understand, simulate, and predict what the systems we build will actually do.
 
@@ -44,7 +44,7 @@ Let's break that down.
 
    As we saw above, with state machines, data updates and effects are only executed at specific points, with clean error handling hooks, and easy simulation. When you know exactly where and under which conditions these critical actions will happen, your entire system becomes intelligible, invariants become comprehensible, and your data becomes trustworthy.
 
-3. **Reasoning about your system** is not optional. There’s the old adage: “Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.” Kernighan said that in the era of standalone programs. How quaint those times seem now. Once you connect two programs together the emergent effects of your *system* - unexpected feedback loops, runaway retries, corrupted data - create a mess many orders of magnitude more “clever” than any one component.
+3. **Reasoning about your system** is not optional. There’s the old adage: "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it." Kernighan said that in the era of standalone programs. How quaint those times seem now. Once you connect two programs together the emergent effects of your *system* - unexpected feedback loops, runaway retries, corrupted data - create a mess many orders of magnitude more “clever” than any one component.
 
    If we’re going to have any hope of understanding the systems we build - and we better, if we want them to do useful things for people - then we have no option but to constrain ourselves to simple parts. Because they are eminently understandable, state machines are just the right high-level structure for the components of a system you hope to be able to understand.
 
@@ -82,7 +82,7 @@ To represent a process that I’m pretty sure you’re picturing in your head ri
 
 It *looks like* those endpoints sitting in their separate files are decoupled but, within each route, we have a bunch of assumptions about where we are in the flow. Orders can only be accepted once, couriers need the order information we stored during order acceptance when they pick up the order and shouldn’t be able to accept early since they’re paid based on time spent. We’ll also need to make sure that, if we offer a job to a courier who rejects, they can’t subsequently accept after another courier is assigned.
 
-In short, to be correct, each endpoint must validate aspects of the overall flow so, to coherently understand this system, we need to think about the whole thing - we can't really understand any part in isolation. The overall *process* is what our customers are paying for, not a set of endpoints. Having spent many sleepless nights attending to outages within just such a system, I know first-hand that seemingly innocent changes to a supposedly isolated endpoint can have unintended consequences that ripple through the entire system.
+In short, to be correct, each endpoint must validate aspects of the overall flow so, to coherently understand this system, we need to think about the whole thing - we can't really understand any part in isolation. The overall *process* is what our customers are paying for, not a set of endpoints. Having spent many sleepless nights attending to outages within just such a system, I know firsthand that seemingly innocent changes to a supposedly isolated endpoint can have unintended consequences that ripple through the entire system.
 
 Basically, all of the critical structure *around* and *between* the endpoints that jumps right out at us in the state machine is completely hidden and hard to extract from the "decoupled" endpoints.
 
@@ -92,7 +92,7 @@ With that feature, we’ve broken all of the assumptions buried in our supposedl
 
 With the traditional structure, we satisfy this new requirement by painstakingly spelunking through each of our endpoints and peppering in the appropriate conditionals, hoping that, in the process, we don’t disrupt the regular orders flowing through our system.
 
-Then, to satisfy restaurants that want to perform their own deliveries, we add a new option: for some orders, instead of dispatching couriers, we give the restaurant the delivery information so they can bring the customer their food. We wade through the mess of conditionals in our “decoupled” endpoints, struggling to trace distinct, coherent flows, painstakingly adding to the confusion as we implement our new feature.
+Then, to satisfy restaurants that want to perform their own deliveries, we add a new option: for some orders, instead of dispatching couriers, we give the restaurant the delivery information so they can bring the customer their food. We wade through the mess of conditionals in our "decoupled" endpoints, struggling to trace distinct, coherent flows, painstakingly adding to the confusion as we implement our new feature.
 
 ### Doing better
 
@@ -104,7 +104,7 @@ If you’re blessed with a generally stateless problem domain where you can buil
 
 If, however, your problem domain, like most, requires inter-component assumptions, I highly recommend that you architect your system as it is - as a whole - instead of pretending it is composed of isolated pieces. As the dependencies between the endpoints of your system intensify, you’ll find more and more value from representing your requests as events sent to an instance of a state machine and your responses as pure functions of the machine’s state and owned data. In these systems, your primary concern is to understand the inter-component flow and that’s exactly what a state machine provides. You then build truly decoupled data updates, actions and conditions that your state machine orchestrates into a coherent whole.
 
-Returning to our example, it doesn’t take a state machine expert to be able to understand our complex, 3-part flow from this executable diagram but I can assure you that after 6 years in the trenches with the “decoupled” endpoint version of this system, I still struggled to piece together a view of the what the *system* was actually doing.
+Returning to our example, it doesn’t take a state machine expert to be able to understand our complex, 3-part flow from this executable diagram but I can assure you that after 6 years in the trenches with the "decoupled" endpoint version of this system, I still struggled to piece together a view of the what the *system* was actually doing.
 
 ![Order state machine v3](./order-state-machine-v3.svg)
 
@@ -116,9 +116,9 @@ Which brings us to our second class of system…
 
 ## Proactive systems / workflows
 
-Workflows are distinguished by being primarily self-driven. They may wait on some external event occasionally, but the primary impetus driving them forward is the completion of some process or timer they started.
+Proactive systems are distinguished by being primarily self-driven. They may wait on some external event occasionally, but the primary impetus driving them forward is the completion of some process or timer they started.
 
-The fundamental problem with workflows is that computers run code as processes and, while processes are permanent(ish) at the timescale of a request, they are decidedly ephemeral at the timescale of a long-lived workflow. We used to string together cron jobs, queues, and watchdogs to ensure forward progress in the face of machine and process failures. That made things work but created a mess - as with the “decoupled” endpoints we saw above, there was no cohesion to the separately-deployed dependencies. All of the above arguments for building more cohesive systems apply doubly so for workflows built around queues, event buses, and timers - understanding a system from those parts demands top-rate detective work.
+The fundamental problem with workflows is that computers run code as processes and, while processes are permanent(ish) at the timescale of a request, they are decidedly ephemeral at the timescale of a long-lived workflow. We used to string together cron jobs, queues, and watchdogs to ensure forward progress in the face of machine and process failures. That made things work but created a mess - as with the "decoupled" endpoints we saw above, there was no cohesion to the separately-deployed dependencies. All of the above arguments for building more cohesive systems apply doubly so for workflows built around queues, event buses, and timers - understanding a system from those parts demands top-rate detective work.
 
 ### Workflow engines and the clever hack
 
@@ -151,6 +151,8 @@ export async function OnboardingWorkflow(email: string) {
  await sendFirstDripEmail(email);
 }
 ```
+
+Workflow engines treat each of our `await`ed functions as "activities" or "steps", recording the inputs and outputs of each and providing us the illusion of being able to resume execution just after any of them.
 
 Now, we decide that we want our welcome email to vary based on the acquisition channel for our user. Simple, right?
 
@@ -198,11 +200,18 @@ For simple workflows, this diagram is helpful but it’s admittedly not a huge i
 
 [Expand](./workflow-upgrade.svg)
 
-We make whatever changes we need and then just map our old states to our new states (a trivial mapping in this case). We also run a function to transform the owned data from our prior version to owned data for our new version (if we had used the acquisition channel in future states, we would want to populate the acquisition channel as part of this migration). Because state machines are inherently resumable from any state, we keep our actual workflow implementation clean and separate from our handling of changes over time.
+As an engineer, we need to do 3 things to cleanly migrate running instances from one version of our machine to another:
+1. We build the new version of our state machine. We don't need to include any vestiges of the old version that are no longer needed. This is represented in the right-hand side of the above diagram.
+2. We write a function to map our old states to our new states (a trivial mapping in this case). This is represented as the left-to-right arrows in the diagram.
+3. We write another function to map the owned data for the old version to owned data for our new version of the machine. For example, if we had used the acquisition channel in future states, we would want to populate the acquisition channel in our owned data as part of this mapping.
+
+Because of the constraints of state machines, those mapping functions are straightforward to write and easy to test.
+
+This upgrade mechanism allows us to keep our workflow implementation clean and completely separate from our handling of changes over time. The inherent ability of state machines to actually resume execution from any state is what allows us to disentangle our change history from our point-in-time state machine definition.
 
 ## Putting them together
 
-Examined more broadly, few systems fall entirely into the reactive or proactive camps. An application likely has reactive aspects that kick off proactive processes that wait for reactive events and so forth. With today’s paradigms, these are incredibly awkward to model uniformly, so we tend to create subsystems built around different abstractions with different operational teams with different expertise. Because state machines are driven by *events* and are inherently resumable, they easily model both facets of typical systems within a single paradigm that’s able to naturally express both types of solutions.
+Examined more broadly, few systems fall entirely into the reactive or proactive categories. An application likely has reactive aspects that kick off proactive processes that wait for reactive events and so forth. With today’s paradigms, these are incredibly awkward to model uniformly, so we tend to create subsystems built around different abstractions with different operational teams with different expertise. Because state machines are driven by *events* and are inherently resumable, they easily model both reactive and proactive systems within a single paradigm that’s able to naturally express both types of solutions.
 
 ## Migrating
 
@@ -210,49 +219,34 @@ Great! So now that you're convinced of the value of state machines, you just nee
 
 Not quite.
 
-You don’t need to *replace* your existing code with state machines. In many cases, you’ll simply want to *wrap* calls to your (simplified) existing code in a state machine. That’s because, for most backends, the entire concept of a flow is simply missing. Once you introduce a state machine that’s responsible for executing the code that previously sat behind your endpoints, you can either update your clients to send events to your new state machine instead of directly invoking endpoints or update the endpoints to send events to the state machine. Then, you can remove the flow-related checks and logic from the former endpoint code that now sits behind your state machine. Finally, you can lift your state management out of the former endpoint code to move ownership of the data to the state machine itself.
+You don’t need to *replace* your existing code with state machines. In many cases, you’ll want to *wrap* calls to your (simplified) existing code in a state machine. That’s because, for most backends, the entire concept of a flow is simply missing. Once you introduce a state machine that’s responsible for executing the code that previously sat behind your endpoints, you can update your clients or API layer to send events to your new state machine instead of directly invoking the endpoints. Then, you can remove the flow-related checks and logic from the former endpoint code that now sits behind your state machine. Finally, you can lift your state management out of the former endpoint code to move ownership of the data to the state machine itself.
 
 Obviously, all of this can be applied just to new projects and migrations can easily be approached piecemeal, wrapping one related set of endpoints at a time.
 
-Just going through the exercise of creating a state machine for a set of endpoints will create valuable insight into the system you thought you knew. The time to finish your next project and lack of outages just might have you hooked.
+Let's examine the value gained at these key milestones:
 
-## Final state
-
-This idea - that state machines could be a natural fit for the high-level structure of systems - has taken a long time to fully form but, having built a platform for running persistent backend state machines, [State Backed](https://www.statebacked.dev), that supports reactive and workflow-based workloads and having built quite a few systems using it, I’m now confident that this is a crucial abstraction for reliable, understandable software systems that are actually productive to work on.
+1. Creating a state machine to wrap a set of endpoints will yield valuable insight into the system you thought you knew. This executable documentation will allow future engineers to understand the overall flow and confidently make changes. You'll even remove the potential for a whole class of race conditions. Often, you'll discover never-before-considered user flows lurking in your existing implementation and this is a great time to finally define how they're supposed to work.
+2. Pulling the flow-related checks and validations out of the former endpoint code will simplify things as only deleting code can. You'll likely even find a few lurking bugs in those complex validations.
+3. Lifting state management out of the former endpoint code and into the state machine removes yet more code with yet more potential for bugs. Importantly, you'll find that your next project finishes faster and with fewer outages because you've pulled many application concerns up to the platform level.
 
 ## Getting started
 
 Ready to start implementing your backends as state machines?
 
-The most important first step is to adopt the state machine mindset. Once you start thinking in terms of states and transitions and constraining updates and effects to edges, you'll start to see immediate improvements in your ability to understand your software.
+The most important first step is to start thinking in terms of states and transitions. Immediately, you'll start to see improvements in your ability to understand your software.
 
-There are some great libraries you can use to build state machines on the backend, including [XState](https://xstate.js.org/docs/).
+There are even some great libraries you can use to build state machines on the backend, including [XState](https://xstate.js.org/docs/).
 
-After thinking about this pattern for a long time, we built [State Backed](https://www.statebacked.dev) to make it incredibly easy to deploy any state machine to the cloud as a reliable workflow or a real-time, reactive backend. We'd be proud to help you adopt state machines for your own backend or we're happy to share notes and help however we can if you choose to build a backend state machine solution yourself.
+And there's a new service that can definitely help you adopt this pattern...
 
-<div className="container text--center" style={{ marginTop: 40 }}>
-    <div id="mc_embed_shell">
-    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">{`
-        #mc_embed_signup{false;clear:left; font:14px Helvetica,Arial,sans-serif; width: 600; margin: auto; max-width: 600px; overflow: hidden;}
-        #mc_embed_signup .helper_text { background: none; }
-    `}
-    </style>
-    <div id="mc_embed_signup">
-        <form action="https://teampando.us8.list-manage.com/subscribe/post?u=dec43cbfe556d982657100961&id=3616b8513f&f_id=00cb72e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank">
-        <div id="mc_embed_signup_scroll"><h2>Stay up to date with the latest from State Backed</h2>
-            <div className="indicates-required"><span className="asterisk">*</span> indicates required</div>
-            <div className="mc-field-group"><label htmlFor="mce-EMAIL">Email Address <span className="asterisk">*</span></label><input type="email" name="EMAIL" className="required email" id="mce-EMAIL" required={true} defaultValue="" /><span id="mce-EMAIL-HELPERTEXT" className="helper_text"></span></div>
-            <div id="mce-responses" className="clear">
-            <div className="response" id="mce-error-response" style={{ display: "none" }}></div>
-            <div className="response" id="mce-success-response" style={{ display: "none" }}></div>
-            </div><div aria-hidden="true" style={{ position: "absolute", left: -5000 }}><input type="text" name="b_dec43cbfe556d982657100961_3616b8513f" tabIndex={-1} readOnly value="" /></div><div className="clear"><input type="submit" name="subscribe" id="mc-embedded-subscribe" className="button" value="Subscribe" style={{backgroundColor: "#000000"}} /></div>
-        </div>
-        </form>
-    </div>
-    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-    <script type="text/javascript">{`(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';}(jQuery));var $mcj = jQuery.noConflict(true);`}</script>
-    </div>
+I was lucky enough to be a part of Uber Eats' journey from an endpoint-oriented to a workflow-oriented architecture. The complex dependencies between endpoints made working on them incredibly difficult and error-prone. With the migration to a workflow abstraction, we gained immense confidence in our system by finally having a cohesive view of the user-relevant flows that we were building.
+
+This was super exciting but I saw huge potential for state machines to expand upon that value. So I started State Backed. We recently released [our state machine cloud](https://www.statebacked.dev) to make it incredibly easy to deploy any state machine as a reliable workflow or a real-time, reactive backend. We'd be proud to help you adopt state machines for your own backend or we're happy to share notes and help however we can if you choose to build a backend state machine solution yourself.
+
+You can have a state machine deployed in the [State Backed](https://www.statebacked.dev) cloud in the next 5 minutes if you'd like to try it out.
+
+<div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+<a href="https://www.statebacked.dev" style={{padding: "16px 24px", margin: "auto", backgroundColor: "#000000", color: "#ffffff", borderRadius: 4}}>Try State Backed for free</a>
 </div>
 
 [^1]: Technically, we’re talking about statecharts throughout this article because we want the expressivity benefits of hierarchical and concurrent states. We’ll use the more common term just for familiarity.
