@@ -77,7 +77,7 @@ export default function Home(): JSX.Element {
                   <div id="mce-responses" className="clear">
                     <div className="response" id="mce-error-response" style={{ display: "none" }}></div>
                     <div className="response" id="mce-success-response" style={{ display: "none" }}></div>
-                  </div><div aria-hidden="true" style={{ position: "absolute", left: -5000 }}><input type="text" name="b_dec43cbfe556d982657100961_3616b8513f" tabIndex={-1} readOnly value="" /></div><div className="clear"><input type="submit" name="subscribe" id="mc-embedded-subscribe" className="button" value="Subscribe" /></div>
+                  </div><div aria-hidden="true" style={{ position: "absolute", left: -5000 }}><input type="text" name="b_dec43cbfe556d982657100961_3616b8513f" tabIndex={-1} readOnly value="" /></div><div className="clear"><input type="submit" name="subscribe" id="mc-embedded-subscribe" className="button" value="Subscribe" style={{backgroundColor: "#000000"}}/></div>
                 </div>
               </form>
             </div>
