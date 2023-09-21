@@ -4,13 +4,13 @@ Whether you intended to or not, you’re probably building a state machine right
 
 That's because any time you have a set of steps with some ordering between them, your system can be represented and built simply and visually as a state machine.
 
-On the frontend, it’s a bit easier to squint and see the states and events you’re modeling. After all, you actually talk about transitions and “paths” the user can take through your app. The mapping from the familiar world of screens and popups and nested components to the language of hierarchical states and transitions is fairly straightforward. So, thankfully, we’ve seen more and more (though not yet enough!) adoption of state machines for modeling frontend flows.
+On the frontend, it’s a bit easier to squint and see the states and events you’re modeling. After all, you actually talk about transitions and "paths" the user can take through your app. The mapping from the familiar world of screens and popups and nested components to the language of hierarchical states and transitions is fairly straightforward. So, thankfully, we’ve seen more and more (though not yet enough!) adoption of state machines for modeling frontend flows.
 
 On the backend, however, while it’s just as true that many of the systems we build are implicitly state machines, I’ve yet to see many teams explicitly model them that way.
 
 I get it. Backend concerns seem quite different. Whiteboards in conference rooms around backend-focused teams are covered in boxes and arrows depicting information flows and architectural dependencies rather than states and transitions.
 
-So many of us backend engineers are so consumed with the mind-boggling concurrency of our systems that we may even scoff at the idea of a system being *in* a “state.” If the frontend seems deterministically Newtonian, the backend seems stubbornly relativistic or, on its worst days, quantum.
+So many of us backend engineers are so consumed with the mind-boggling concurrency of our systems that we may even scoff at the idea of a system being *in* a "state." If the frontend seems deterministically Newtonian, the backend seems stubbornly relativistic or, on its worst days, quantum.
 
 But our users most certainly expect that each logical grouping of their data is self-consistent. While we’re thinking about data en masse, our users really care about data in the small&mdash;*this* document or *that* ad campaign.
 
@@ -24,7 +24,7 @@ The mechanism we need to accomplish that is none other than the lowly state mach
 
 ## The five sentence state machine intro
 
-A state machine[^1] definition consists of possibly nested states and transitions between them. Transitions happen in response to events and may have conditions that determine whether they’re active or not. Hierarchy allows for concurrent states. Each instance of a state machine is in a set of states at a time (a set rather than a single state because of concurrent states) and owns some arbitrary data that it operates on. States can define effects that run when the state is entered or exited and transitions can define effects that run when the transition is taken. Those effects can atomically update the instance’s data or interact with external systems. This structure is easily visualized like this:
+A state machine[^1] definition consists of possibly nested states and transitions between them. Transitions happen in response to events and may have conditions that determine whether they’re active or not. Hierarchy allows for concurrent states. Each instance of a state machine is in one set of states at a time (a set rather than a single state because of concurrent states) and owns some arbitrary data that it operates on. States can define effects that run when the state is entered or exited and transitions can define effects that run when the transition is taken. Those effects can atomically update the instance’s data or interact with external systems. This structure is easily visualized like this:
 
 ![State machine example](./state-machine-intro.svg)
 
