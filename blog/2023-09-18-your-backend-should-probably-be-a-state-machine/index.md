@@ -32,7 +32,7 @@ This structure is easily visualized like this:
 
 ## The backend state machine value proposition
 
-We’ll talk about exactly how state machines will help us solve the major classes of problems we face in backend development but, first, let’s look at the high-level value proposition.
+We’ll talk about exactly how state machines help us solve the major classes of problems we face in backend development but, first, let’s look at the high-level value proposition.
 
 > State machines are a mechanism for carefully **constraining** the updates to our **critical data** and the execution of **effects** in a way that allows us to **express** solutions to many classes of problems we encounter and to effectively **reason** about those solutions.
 
@@ -48,9 +48,9 @@ Let's break that down.
 
 3. **Reasoning about your system** is not optional. There’s the old adage: "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it." Kernighan said that in the era of standalone programs. How quaint those times seem now. Once you connect two programs together the emergent effects of your *system*&mdash;unexpected feedback loops, runaway retries, corrupted data&mdash;create a mess many orders of magnitude more “clever” than any one component.
 
-   If we’re going to have any hope of understanding the systems we build&mdash;and we better, if we want them to do useful things for people&mdash;then we have no option but to constrain ourselves to simple parts. Because they are eminently understandable, state machines are just the right high-level structure for the components of a system you hope to be able to understand.
+   If we’re going to have any hope of understanding the systems we build&mdash;and we better, if we want them to do useful things for people&mdash;then we have no option but to constrain ourselves to simple parts. Because they are so simple, state machines are just the right high-level structure for the components of a system you hope to be able to understand.
 
-4. **We left off expressiveness**. Expressiveness is the point at which I hear the groans from some of the folks in the back. We've all been burned by the promise of a configuration-driven panacea before. What happens when your problem demands you step beyond the paved road that that platform envisioned? And so began the rise of the "everything as code" movement that's now ascendant. It makes sense. You simply can't forego expressivity because expressivity determines your ability to solve the problems you're faced with. It's non-negotiable.
+4. **We left off expressiveness**. Expressiveness is the point at which I hear the groans from some of the folks in the back. We've all been burned by the promise of a configuration-driven panacea before. What happens when your problem demands you step beyond the paved road that the platform envisioned? And so began the rise of the "everything as code" movement that's now ascendant. It makes sense. You simply can't forego expressivity because expressivity determines your ability to solve the problems you're faced with. It's non-negotiable.
 
    But *expressivity* is the key, not arbitrary *code* executing in arbitrary ways. State machines are expressive enough to model processes in any domain, naturally. They simply provide the high-level structure within which your code executes. This constraint ensures you can naturally express your logic while preserving your ability to model the system in your head. Even non-engineers can typically understand a system's logic by looking at its state machines.
 
@@ -80,7 +80,7 @@ To represent a process that I’m pretty sure you’re picturing in your head ri
 
 [Expand](./order-state-machine-v1.svg)
 
-### The traditional approach
+### The problem with the traditional approach
 
 It *looks like* those endpoints sitting in their separate files are decoupled but, within each route, we have a bunch of assumptions about where we are in the flow. Orders can only be accepted once, couriers need the order information we stored during order acceptance when they pick up the order and shouldn’t be able to accept early since they’re paid based on time spent. We’ll also need to make sure that, if we offer a job to a courier who rejects, they can’t subsequently accept after another courier is assigned.
 
@@ -116,7 +116,7 @@ By making this shift, we can solve the general problem of running consistent ins
 
 Which brings us to our second class of system…
 
-## Proactive systems / workflows
+## Proactive systems (workflows)
 
 Proactive systems are distinguished by being primarily self-driven. They may wait on some external event occasionally, but the primary impetus driving them forward is the completion of some process or timer they started.
 
@@ -130,7 +130,7 @@ There is only one constant across every software project I’ve seen: change. We
 
 The *best* of these systems allow you to litter your code with version checks to manually recover missing context. *Understanding* is the hardest part of the job and  trying to reason about a workflow littered with “if (version > 1.123) {...}” checks is like betting your business on your ability to win at 3d chess&mdash;we shouldn’t need to introduce a time dimension to our code.
 
-This obvious problem of wildly complicated updates derives from the less obvious, more insidious issue with workflow platforms: at their core is a [Shlemiel the painter algorithm](https://www.joelonsoftware.com/2001/12/11/back-to-basics/). They cleverly provide the illusion of resuming your code where it left off but that’s simply not possible with the lack of constraints present in arbitrary code, where any line can depend on arbitrary state left in memory by any code that previously ran. They provide this illusion by running from the beginning on every execution and using stored responses for already-called effects, thereby re-building all of the arbitrary in-process context that your next bit of code might depend on.
+This obvious problem of wildly complicated updates derives from the less obvious, more insidious issue with workflow platforms: at their core is a [Shlemiel the painter algorithm](https://www.joelonsoftware.com/2001/12/11/back-to-basics/). They cleverly provide the illusion of resuming your code where it left off but that’s simply not possible with the lack of constraints present in arbitrary code, where any line can depend on arbitrary state left in memory by any code that previously ran. They provide this illusion by running from the beginning on every execution and using stored responses for already-called effects, thereby re-building all of the in-process context that your next bit of code might depend on.
 
 It is *clever*!
 
@@ -149,12 +149,12 @@ Let’s look at an example of an onboarding workflow we might run with a standar
 ```javascript
 export async function OnboardingWorkflow(email: string) {
  await sendWelcomeEmail(email);
- await sleep(“1 day”);
+ await sleep("1 day");
  await sendFirstDripEmail(email);
 }
 ```
 
-Workflow engines treat each of our `await`ed functions as "activities" or "steps", recording the inputs and outputs of each and providing us the illusion of being able to resume execution just after any of them.
+Workflow engines treat each of our `await`ed functions as "activities" or "steps", recording the inputs and outputs of each and providing us the illusion of being able to resume execution just after them.
 
 Now, we decide that we want our welcome email to vary based on the acquisition channel for our user. Simple, right?
 
@@ -162,7 +162,7 @@ Now, we decide that we want our welcome email to vary based on the acquisition c
 export async function OnboardingWorkflow(email: string) {
  const acquisitionChannel = await getAcquisitionChannel(email);
  await sendWelcomeEmail(email, acquisitionChannel);
- await sleep(“1 day”);
+ await sleep("1 day");
  await sendFirstDripEmail(email);
 }
 ```
@@ -179,7 +179,7 @@ export async function OnboardingWorkflow(email: string) {
    const acquisitionChannel = await getAcquisitionChannel(email);
    await sendWelcomeEmail(email, acquisitionChannel);
  }
- await sleep(“1 day”);
+ await sleep("1 day");
  await sendFirstDripEmail(email);
 }
 ```
@@ -209,7 +209,7 @@ As an engineer, we need to do 3 things to cleanly migrate running instances from
 
 Because of the constraints of state machines, those mapping functions are straightforward to write and easy to test.
 
-This upgrade mechanism allows us to keep our workflow implementation clean and completely separate from our handling of changes over time. The inherent ability of state machines to actually resume execution from any state is what allows us to disentangle our change history from our point-in-time state machine definition.
+This upgrade mechanism allows us to keep our workflow implementation clean and completely separate from our handling of changes over time. The inherent ability of state machines to *actually* resume execution from any state is what allows us to disentangle our change history from our point-in-time state machine definition.
 
 ## Putting them together
 
@@ -243,7 +243,7 @@ And there's a new service that can definitely help you adopt this pattern...
 
 I was lucky enough to be a part of Uber Eats' journey from an endpoint-oriented to a workflow-oriented architecture. The complex dependencies between endpoints made working on them incredibly difficult and error-prone. With the migration to a workflow abstraction, we gained immense confidence in our system by finally having a cohesive view of the user-relevant flows that we were building.
 
-This was super exciting but I saw huge potential for state machines to expand upon that value. So I started State Backed. We recently released [our state machine cloud](https://www.statebacked.dev) to make it incredibly easy to deploy any state machine as a reliable workflow or a real-time, reactive backend. We'd be proud to help you adopt state machines for your own backend or we're happy to share notes and help however we can if you choose to build a backend state machine solution yourself.
+This was super exciting but, as I'm sure you can tell by now, I saw huge potential for state machines to expand upon that value. So I started State Backed. We recently released [our state machine cloud](https://www.statebacked.dev) to make it incredibly easy to deploy any state machine as a reliable workflow or a real-time, reactive backend. We'd be proud to help you adopt state machines for your own backend or we're happy to share notes and help however we can if you choose to build a state machine solution yourself.
 
 You can have a state machine deployed in the [State Backed](https://www.statebacked.dev) cloud in the next 5 minutes if you'd like to try it out.
 
@@ -251,7 +251,7 @@ You can have a state machine deployed in the [State Backed](https://www.statebac
 <a href="https://www.statebacked.dev" style={{padding: "16px 24px", margin: "auto", backgroundColor: "#000000", color: "#ffffff", borderRadius: 4}}>Try State Backed for free</a>
 </div>
 
-[^1]: Technically, we’re talking about statecharts throughout this article because we want the expressivity benefits of hierarchical and concurrent states. We’ll use the more common term just for familiarity.
+[^1]: Technically, we’re talking about statecharts throughout this article because we want the expressivity benefits of hierarchical and parallel states. We’ll use the more common term just for familiarity.
 
 [^2]: This was pioneered by platforms like [Cadence](https://cadenceworkflow.io/docs/concepts/workflows). These platforms were a *huge* leap forward for proactive system design because they enabled cohesion in this type of software for the first time. The fact that we believe that state machines are a more suitable abstraction doesn't detract at all from the amazing advance that these platforms made.
 
