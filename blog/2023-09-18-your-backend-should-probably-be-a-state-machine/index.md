@@ -24,7 +24,7 @@ The mechanism we need to accomplish that is none other than the lowly state mach
 
 ## The five sentence state machine intro
 
-A state machine[^1] definition consists of possibly nested states and transitions between them. Transitions happen in response to events and may have conditions that determine whether they’re active or not. Hierarchy allows for concurrent states. Each instance of a state machine is in one set of states at a time (a set rather than a single state because of concurrent states) and owns some arbitrary data that it operates on. States can define effects that run when the state is entered or exited and transitions can define effects that run when the transition is taken. Those effects can atomically update the instance’s data or interact with external systems. This structure is easily visualized like this:
+A state machine[^1] definition consists of possibly nested states and transitions between them. Transitions happen in response to events and may have conditions that determine whether they’re active or not. Hierarchy allows for parallel (simultaneous) states. Each instance of a state machine is in one set of states at a time (a set rather than a single state because of parallel states) and owns some arbitrary data that it operates on. States can define effects that run when the state is entered or exited and transitions can define effects that run when the transition is taken. Those effects can atomically update the instance’s data or interact with external systems. This structure is easily visualized like this:
 
 ![State machine example](./state-machine-intro.svg)
 
