@@ -241,7 +241,7 @@ There are even some great libraries you can use to build state machines on the b
 
 And there's a new service that can definitely help you adopt this pattern...
 
-I was lucky enough to be a part of Uber Eats' journey from an endpoint-oriented to a workflow-oriented architecture. The complex dependencies between endpoints made working on them incredibly difficult and error-prone. With the migration to a workflow abstraction, we gained immense confidence in our system by finally having a cohesive view of the user-relevant flows that we were building.
+I was lucky enough to be a part of Uber Eats' journey from an endpoint-oriented to a workflow-oriented architecture. Complex dependencies between endpoints had made working on them incredibly difficult and error-prone. With the migration to a workflow abstraction, we gained immense confidence in our system by finally having a cohesive view of the user-relevant flows that we were building.
 
 This was super exciting but, as I'm sure you can tell by now, I saw huge potential for state machines to expand upon that value. So I started State Backed. We recently released [our state machine cloud](https://www.statebacked.dev) to make it incredibly easy to deploy any state machine as a reliable workflow or a real-time, reactive backend. We'd be proud to help you adopt state machines for your own backend or we're happy to share notes and help however we can if you choose to build a state machine solution yourself.
 
