@@ -79,7 +79,7 @@ You can allow users to create session-scoped machine instances but ensure they d
 don't own by writing machine authorizers like this:
 
 ```javascript title=your-machine-definition.ts
-import { AllowRead, AllowWrite, AnonymousAuthContext } from "@statebacked/machine-def";
+import { AllowRead, AllowWrite, AnonymousAuthContext } from "@statebacked/machine";
 
 // shape of your machine's context
 type Context = {};

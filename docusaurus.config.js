@@ -118,7 +118,7 @@ const config = {
               },
               {
                 label: "Types for machine definitions and migrations",
-                href: "https://statebacked.github.io/machine-def/"
+                href: "https://statebacked.github.io/machine/"
               },
             ],
           },

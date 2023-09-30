@@ -10,7 +10,7 @@ export default function TogglerMachineExample() {
                 <Code language='typescript' title='example-machine.ts'>
                 {`
 import {createMachine, assign} from "xstate";
-import type {AllowRead, AllowWrite, AnonymousAuthContext} from "@statebacked/machine-def";
+import type {AllowRead, AllowWrite, AnonymousAuthContext} from "@statebacked/machine";
 
 // shape of your machine's context
 type Context = {};

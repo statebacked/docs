@@ -364,7 +364,7 @@ Then, we created a [migration](https://github.com/statebacked/examples/blob/main
 that mapped the incorrect state names to the correct state names like this:
 
 ```javascript
-import { UpgradeState, UpgradeContext } from "@statebacked/machine-def";
+import { UpgradeState, UpgradeContext } from "@statebacked/machine";
 
 export const upgradeState: UpgradeState = (oldState, _context) => {
   // I made a silly mistake and originally named the "o" player

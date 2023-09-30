@@ -21,7 +21,7 @@ Follow along with the CLI-based quick start, below, or use our [web dashboard](h
 
 ```bash npm2yarn
 npm init
-npm install --save xstate @statebacked/machine-def
+npm install --save xstate @statebacked/machine
 # Optional but recommended. You can use npx to invoke smply if you don't want to install it globally.
 npm install --global smply
 ```

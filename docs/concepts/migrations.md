@@ -38,7 +38,7 @@ First, you'll write a migration from one version of your machine to another.
 <TabItem value="ts" label="Typescript">
 
 ```javascript title=example-migration.ts
-import { UpgradeState, UpgradeContext } from "@statebacked/machine-def";
+import { UpgradeState, UpgradeContext } from "@statebacked/machine";
 
 export const upgradeState: UpgradeState = (oldState, oldContext) => {
     // oldState is an array describing a full path to a state in the old version of the machine

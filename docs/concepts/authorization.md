@@ -37,9 +37,9 @@ authorization decisions.
 
 The code in every [machine version](./machine-versions) default exports
 an XState machine and exports two named functions:
-[`allowRead`](https://statebacked.github.io/machine-def/types/AllowRead.html)
+[`allowRead`](https://statebacked.github.io/machine/types/AllowRead.html)
 and
-[`allowWrite`](https://statebacked.github.io/machine-def/types/AllowWrite.html).
+[`allowWrite`](https://statebacked.github.io/machine/types/AllowWrite.html).
 
 Both functions return a boolean indicating whether the request should be allowed or not.
 Any request that is denied by an authorization function will respond with a HTTP 403
@@ -109,7 +109,7 @@ function generateToken(user) {
 Regardless of how you generate a token with a `sub` claim, authorization looks the same:
 
 ```javascript title=your-machine-definition.ts
-import { AllowRead, AllowWrite } from "@statebacked/machine-def";
+import { AllowRead, AllowWrite } from "@statebacked/machine";
 
 export const allowRead: AllowRead = ({ machineInstanceName, authContext }) =>
     machineInstanceName === authContext.sub;
@@ -153,7 +153,7 @@ function generateToken(user) {
 Authorization:
 
 ```javascript title=your-machine-definition.ts
-import { AllowRead, AllowWrite } from "@statebacked/machine-def";
+import { AllowRead, AllowWrite } from "@statebacked/machine";
 
 export const allowRead: AllowRead = ({ machineInstanceName, authContext }) =>
     authContext.groups.includes(machineInstanceName);
@@ -201,7 +201,7 @@ function generateToken(user) {
 Authorization:
 
 ```javascript title=your-machine-definition.ts
-import { AllowRead, AllowWrite } from "@statebacked/machine-def";
+import { AllowRead, AllowWrite } from "@statebacked/machine";
 
 export const allowRead: AllowRead = ({ context, authContext }) =>
     Object.hasOwn(context.members, authContext.sub);
