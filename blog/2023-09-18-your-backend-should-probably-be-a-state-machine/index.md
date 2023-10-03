@@ -1,3 +1,9 @@
+---
+title: Your backend should probably be a state machine
+authors: [abrgr]
+tags: [philosophy]
+---
+
 # Your backend should probably be a state machine
 
 Whether you intended to or not, you’re probably building a state machine right now.
