@@ -1,7 +1,7 @@
 ---
 title: Your backend should probably be a state machine
 authors: [abrgr]
-tags: [philosophy]
+tags: [architecture]
 ---
 
 # Your backend should probably be a state machine
