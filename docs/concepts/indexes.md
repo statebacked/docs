@@ -23,6 +23,10 @@ The machine can specify an index named `folder` and a machine version could prov
 Note how the `indexSelectors` map index names to JSONPath expressions that point to the value from each instance's context to use for that index.
 Then, we could find all documents in a particular folder by querying the `folder` index with the filter `{ "op": "eq", "value": "/clients/my-client/sales-pitches" }`.
 
+For now, index selectors must point to strings or arrays of strings.
+If the selector points to a string, that will be the value indexed for the instance.
+If the selector points to an array of strings, each string in the array will be independently indexed for that instance.
+
 Because machines are [restricted](../limits) to 400kb of context data, indexes provide us a means of storing an unbounded amount of data about a single entity (e.g. there is no limit on the number of documents in a folder in the above example).
 
 :::caution
@@ -30,6 +34,13 @@ Without indexes, only those elements of an instance's context that are under the
 With indexes, the value of any indexed context property, which is not limited only to those properties under the `public` key, are exposed to any client with permission to query from the index.
 Index queries are allowed from any client with `indexes.read` scope.
 :::
+
+## Guarantees
+
+Indexes may be updated in an eventually-consistent manner if their values change due to a transition.
+We ensure that index updates will occur within a few seconds of the transition (they currently happen transactionally with the transition).
+Obviously, transitions may occur which, depending on your transition logic, may update the indexed value between querying an index and making another call to read the data from the machine.
+Each query to an index, however, will retrieve a consistent page of items.
 
 ## CLI
 
