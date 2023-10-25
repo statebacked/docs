@@ -17,7 +17,11 @@ Each machine definition can have multiple machine versions associated with it bu
 You can create many **machine instances** for each machine definition.
 When you create a machine instance, you can specify the machine version you want to use or State Backed will create an instance using the current version for that machine definition at the time that you create the instance.
 
-So machine definitions are really just a name.
+Finally, machines can specify a set of [indexes](./indexes) that can be used to find machine instances based on values from their context.
+Without indexes, you can retrieve machine instances by their name (an indentifier that you provide when you create the instance).
+With indexes, you can list, for example, all of the machine instances with a `userId` value in their context that matches your current user.
+
+So machine definitions are really just a name and an optional list of indexes.
 To learn how you'll specify your actual business logic, read on about [machine versions](./machine-versions).
 
 ## Web dashboard
@@ -47,10 +51,19 @@ a [web standards-like environment](../runtime-environment.md) and pass its path 
 
 ```bash
 # to create a machine definition without an initial machine version
-smply machines create --machine <your machine name>
+smply machines create --machine <your-machine-name>
 
 # to create a machine definition with an initial machine version
-smply machines create --machine <your machine name> --node <your-machine.(ts|js)>
+smply machines create --machine <your-machine-name> --node <your-machine.(ts|js)>
+
+# to create a machine definition without an initial version but with indexes
+smply machines create --machine <your-machine-name> --index <my-index> --index <my-index2>
+
+# to create a machine definition with an initial version and indexes
+smply machines create \
+  --machine <your-machine-name> \
+  --node <your-machine.(ts|js)> \
+  --index-selectors '{ "my-index": "$.jsonPath.inContext", "my-index2": "$.jsonPath.inContext" }'
 ```
 
 ### Listing machine definitions
@@ -62,7 +75,7 @@ smply machines list
 ### Retrieving information about a machine definition
 
 ```bash
-smply machines get --machine <your machine name>
+smply machines get --machine <your-machine-name>
 ```
 
 ## Client SDK

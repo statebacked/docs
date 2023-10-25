@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 # Keys
@@ -40,6 +40,7 @@ There are 3 distinct sets of scopes worth mentioning:
     - `events.write` - for sending events to machine instances
     - `state.read` - for reading the state of machine instances
     - `instances.write` - for creating new machine instances.
+    - `indexes.read` - for querying machine indexes for matching instances
 - Scopes that are relevant for typical continuous integration (CI) usage. You can create a key
   that has access to these scopes by passing `--use ci` at the CLI. These scopes are:
     - `machines.read` - to list and retrieve existing machine definitions
