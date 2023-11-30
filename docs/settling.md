@@ -6,10 +6,10 @@ sidebar_position: 3
 
 State Backed supports long-running workflows composed of intermediate-length steps.
 That means that your machine instances can process a huge amount of data or events in a completely
-durable and reliable way by running many short (&lt;10 seconds) actions.
+durable and reliable way by running many short (&lt;90 seconds) actions.
 
 When a machine instance receives an event, the machine continues processing until it "settles" or until
-that event's 10 second timeout elapses.
+that event's 90 second timeout elapses.
 
 A machine instance is considered "settled" when it has no ephemeral child services running.
 
@@ -70,11 +70,11 @@ export default createMachine({
 The request to create a machine instance from this machine will complete right away.
 
 A subsequent request to send the `run` event to the machine instance will wait until
-the `request-data` request completes or until 10 seconds have elapsed. If the request
-completes prior to the 10 second timeout, the send event request will return the
+the `request-data` request completes or until 90 seconds have elapsed. If the request
+completes prior to the 90 second timeout, the send event request will return the
 new state of the machine instance `complete` or `failed`. Otherwise, because the event
 produced one successful transition (from `idle` to `run`), it will return `run` as
-the state of the machine instance and stop the ongoing fetch after 10 seconds.
+the state of the machine instance and stop the ongoing fetch after 90 seconds.
 Then, when the next event is sent to the machine instance, it will first receive an
 error event for the `request-data` service and transition to the `failed` state
 and only *then* will it process the new event. This ensures a completely consistent
@@ -125,4 +125,4 @@ Whenever the "child-machine" instance executes a `sendParent` action to send its
 a "proceed" event, our instance will receive it and execute the appropriate transition.
 
 Time spent to create the new persistent machine instance does not count against the
-10 second timeout for event processing.
+90 second timeout for event processing.
