@@ -55,8 +55,8 @@ instead of treating it as an external, you will need to use `spawnEphemeralInsta
 xstate `spawn` to spawn ephemeral
 (i.e. non-[persistent](./child-instances-and-inter-instance-communication) instances).
 
-If you elect to have `smply` build your bundle, it executes builds with
-[esbuild](https://esbuild.github.io/) using:
+If you elect to have `smply` build your bundle, it ensures xstate is treated as an external
+library and executes builds with [esbuild](https://esbuild.github.io/) using (essentially):
 
 ```bash
 esbuild <your-file.(js|ts)> \
