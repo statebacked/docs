@@ -47,6 +47,13 @@ from your javascript or typescript code or you can build your bundle yourself.
 
 If you choose to build your own bundle, make sure you target a web 
 standards-like [environment](../runtime-environment) and emit an ECMAScript module (esm).
+We also highly recommend treating `xstate` as an externally-loaded dependency, referenced
+Deno-style as `npm:xstate`. State Backed internally maps this to the latest 4.x version of
+XState to ensure that only one XState dependency is used. If you choose to bundle `xstate`
+instead of treating it as an external, you will need to use `spawnEphemeralInstance` from
+[`@statebacked/machine`](https://github.com/statebacked/machine) instead of the native
+xstate `spawn` to spawn ephemeral
+(i.e. non-[persistent](./child-instances-and-inter-instance-communication) instances).
 
 If you elect to have `smply` build your bundle, it executes builds with
 [esbuild](https://esbuild.github.io/) using:
@@ -56,7 +63,13 @@ esbuild <your-file.(js|ts)> \
     --bundle \
     --platform=browser \
     --define:process.env.NODE_ENV=\"production\" \
-    --format=esm
+    --format=esm \
+    --minify \
+    --keep-names \
+    --legal-comments=none \
+    --drop:debugger \
+    --external:npm:xstate \
+    --alias:xstate=npm:xstate
 ```
 
 For convenience, `smply` supports node or deno dependency resolution.
