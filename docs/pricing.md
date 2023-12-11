@@ -24,13 +24,19 @@ of a machine instance.
 That means that a transition to a state with an `always` transition to another state will count as one
 transition.
 
-Further, a transition includes 10kb of context when represented as a UTF8 JSON string.
-A transition that results in 35kb of context will be charged as 4 transitions.
+Further, a transition includes 100kb of context when represented as a UTF8 JSON string.
+A transition that results in 350kb of context will be charged as 4 transitions.
+
+For machines that declare [indexes](./concepts/indexes), each index write is charged as 0.5 transitions.
+
+An instance [migration](./concepts/migrations) results in one transition and one index write for each declared index.
 
 ### Reads
 
 A read is counted for every request that returns machine instance state *except* for those requests
 that result in transitions (that is, every transition includes a free read).
+
+[Index](./concepts/indexes) queries are charged as 1 read.
 
 ### Historical transition retention
 

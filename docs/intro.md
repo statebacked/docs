@@ -37,7 +37,7 @@ In your machines, you can run just about anything you want: call external servic
 to send emails, update your own API, read data from external sources, or schedule
 actions and events to run in the future with our reliable timers using all of the power of XState.
 There are really only 2 things to keep in mind:
-1. Your machine can execute for 10 seconds after it receives an event. After 10 seconds,
+1. Your machine can execute for 90 seconds after it receives an event. After 90 seconds,
 if there are still any running services, they will be stopped and your machine will receive
 an error event from them. The most recent state of the machine will returned and your machine
 will always be in a consistent state. State Backed supports long-running workflows composed of short-running steps.

@@ -10,10 +10,10 @@ Processing for a machine instance is coordinated such that there is
 a single, linearizable history of events and state transitions.
 
 Machine instances will process a single event at a time. Processing will continue
-until the machine instance ["settles"](./settling) or the 10 second
+until the machine instance ["settles"](./settling) or the 90 second
 [processing timeout](./limits) elapses. Each event sent by a client or initiated by
 a reliable timer extends the processing timeout such that the machine instance
-will continue processing until 10 seconds after the *last* external event was
+will continue processing until 90 seconds after the *last* external event was
 delivered.
 
 No service that a machine starts or action that it executes as part of a transition

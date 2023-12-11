@@ -11,7 +11,7 @@ action to send events to children or sendParent to send an event to your parent.
 
 By default, any children spawned or invoked from a State Backed instance are considered
 ephemeral. This means that they only execute as part of processing an event and
-they are stopped if they are still running after the 10 second event processing
+they are stopped if they are still running after the 90 second event processing
 timeout elapses (and an error event will be delivered prior to processing the
 next event they receive).
 
@@ -20,7 +20,7 @@ which are instances of other State Backed machines. Machines can send events to
 persistent children and parents exactly as they would to ephemeral children.
 Persistent children are independently addressable, meaning that they are fully-fledged
 machine instances that clients can send events to and subscribe to, and outlive
-the 10 second event processing timeout. Events sent between persistent machine instances
+the 90 second event processing timeout. Events sent between persistent machine instances
 are reliable and will be retried (up to 5 times) if errors occur during processing.
 
 Like all events sent from external actors, machines must allow events from children

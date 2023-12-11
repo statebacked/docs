@@ -7,9 +7,9 @@ sidebar_position: 8
 - Machine instances execute in a [web standards-like environment](./runtime-environment) with 128mb of memory.
 - When a machine receives an event, it has 10 seconds to ["settle"](./settling), where "settling" means
   that it has no ephemeral child services running.
-  If a machine exceeds this 10 second timeout and made at least one successful transition,
+  If a machine exceeds this 90 second timeout and made at least one successful transition,
   State Backed will respond with the latest machine state.
-  In all cases, after the 10 second timeout, any running ephemeral child services will be stopped.
+  In all cases, after the 90 second timeout, any running ephemeral child services will be stopped.
   When **the next** event is sent to the machine instance, State Backed will first deliver
   error events for each ephemeral child service that was active during the timeout and will
   then deliver the new event.
@@ -25,7 +25,7 @@ sidebar_position: 8
   cannot exceed 1mb (1,000,000 bytes). The size of the Javascript bundle after unzipping cannot
   exceed 10mb (10,000,000 bytes).
 - By default, any spawned services live only as long as the processing of the current event,
-  which is limited to at most 10 seconds.
+  which is limited to at most 90 seconds.
   By using the `spawnPersistentInstance` method or specifying a persistent actor as an invoke source with the
   `persistentInvocableSource` from `@statebacked/machine`, your machine instances can launch persistent
   child instances 
