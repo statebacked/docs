@@ -5,7 +5,7 @@ sidebar_position: 8
 # Limits
 
 - Machine instances execute in a [web standards-like environment](./runtime-environment) with 128mb of memory.
-- When a machine receives an event, it has 10 seconds to ["settle"](./settling), where "settling" means
+- When a machine receives an event, it has 90 seconds to ["settle"](./settling), where "settling" means
   that it has no ephemeral child services running.
   If a machine exceeds this 90 second timeout and made at least one successful transition,
   State Backed will respond with the latest machine state.
