@@ -129,6 +129,20 @@ A POST to `/http-api/{orgId}/machines/order/place-order` with a valid JWT will:
 
 If the handler throws (e.g. bad method, invalid JWT, missing fields), the request fails before any machine instance is created or event is sent.
 
+### Example request
+
+```bash
+curl --request POST \
+  https://api.statebacked.dev/http-api/$ORG_ID/machines/order/place-order \
+  --header "Authorization: Bearer $JWT" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "orderId": "order-123",
+    "items": ["item-a", "item-b"],
+    "total": 49.99
+  }'
+```
+
 ## Request flow in detail
 
 ### Handler input
